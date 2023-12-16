@@ -26,18 +26,8 @@ You can check other adapters for examples or ask in the developer community. Usi
 
 You are almost done, only a few steps left:
 1. Create a new repository on GitHub with the name `ioBroker.notificationforandroidtv`
-1. Initialize the current folder as a new git repository:  
-	```bash
-	git init -b main
-	git add .
-	git commit -m "Initial commit"
-	```
-1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/DNAngelX/ioBroker.notificationforandroidtv
-	```
 
-1. Push all files to the GitHub repo:  
+1. Push all files to the GitHub repo. The creator has already set up the local repository for you:  
 	```bash
 	git push origin main
 	```
@@ -112,12 +102,12 @@ For later updates, the above procedure is not necessary. Just do the following:
 -->
 
 ### **WORK IN PROGRESS**
-* (DNAngelX) initial release
+* (DNAngel) initial release
 
 ## License
 MIT License
 
-Copyright (c) 2023 DNAngelX <stolly82@web.de>
+Copyright (c) 2023 DNAngel <stolly82@web.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

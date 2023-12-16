@@ -17,19 +17,19 @@
 				"zh-cn": "首次出版"
 			}
 		},
-		"title": "Notification for android-tv",
+		"title": "Notification for AndroidTv and FireTV",
 		"titleLang": {
-			"en": "Notification for android-tv",
-			"de": "Benachrichtigung für Android-TV",
-			"ru": "Уведомление для Android-TV",
-			"pt": "Notificação para android-tv",
-			"nl": "Melding voor Android-tv",
-			"fr": "Notification pour Android-TV",
-			"it": "Notifica per Android TV",
-			"es": "Notificación para android-tv",
-			"pl": "Powiadomienie dla telewizora z systemem Android",
-			"uk": "Сповіщення для android-tv",
-			"zh-cn": "android-tv 的通知"
+			"en": "Notification for AndroidTv and FireTV",
+			"de": "Benachrichtigung für AndroidTv und FireTV",
+			"ru": "Уведомление для AndroidTv и FireTV",
+			"pt": "Notificação para AndroidTv e FireTV",
+			"nl": "Melding voor AndroidTv en FireTV",
+			"fr": "Notification pour AndroidTv et FireTV",
+			"it": "Notifica per AndroidTv e FireTV",
+			"es": "Notificación para AndroidTv y FireTV",
+			"pl": "Powiadomienie dla AndroidTv i FireTV",
+			"uk": "Сповіщення для AndroidTv і FireTV",
+			"zh-cn": "AndroidTv 和 FireTV 的通知"
 		},
 		"desc": {
 			"en": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
@@ -45,7 +45,7 @@
 			"zh-cn": "IoBroker 的通知集成包括对 Android TV 通知和 Fire TV 通知的支持。"
 		},
 		"authors": [
-			"DNAngelX <stolly82@web.de>"
+			"DNAngel <stolly82@web.de>"
 		],
 		"keywords": [
 			"Notification",
@@ -69,8 +69,28 @@
 		"connectionType": "local",
 		"dataSource": "assumption",
 		"adminUI": {
-			"config": "materialize"
+			"config": "materialize",
+			"tab": "materialize"
 		},
+		"adminTab": {
+			"singleton": true,
+			"name": {
+				"en": "Notification for AndroidTv and FireTV",
+				"de": "Benachrichtigung für AndroidTv und FireTV",
+				"ru": "Уведомление для AndroidTv и FireTV",
+				"pt": "Notificação para AndroidTv e FireTV",
+				"nl": "Melding voor AndroidTv en FireTV",
+				"fr": "Notification pour AndroidTv et FireTV",
+				"it": "Notifica per AndroidTv e FireTV",
+				"es": "Notificación para AndroidTv y FireTV",
+				"pl": "Powiadomienie dla AndroidTv i FireTV",
+				"uk": "Сповіщення для AndroidTv і FireTV",
+				"zh-cn": "AndroidTv 和 FireTV 的通知"
+			},
+			"link": "",
+			"fa-icon": "info"
+		},
+		"supportCustoms": true,
 		"dependencies": [
 			{
 				"js-controller": ">=3.3.22"

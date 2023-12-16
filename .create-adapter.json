@@ -2,7 +2,7 @@
 	"cli": true,
 	"target": "directory",
 	"adapterName": "notificationforandroidtv",
-	"title": "Notification for android-tv",
+	"title": "Notification for AndroidTv and FireTV",
 	"description": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
 	"keywords": [
 		"Notification",
@@ -12,11 +12,14 @@
 		"Benachrichtigungen",
 		"Fire TV"
 	],
-	"expert": "no",
+	"expert": "yes",
 	"features": [
 		"adapter"
 	],
-	"adminFeatures": [],
+	"adminFeatures": [
+		"tab",
+		"custom"
+	],
 	"type": "messaging",
 	"startMode": "daemon",
 	"connectionType": "local",
@@ -25,21 +28,22 @@
 	"language": "JavaScript",
 	"nodeVersion": "16",
 	"adminUi": "html",
+	"tabReact": "no",
 	"tools": [
 		"ESLint",
 		"type checking"
 	],
-	"i18n": "words.js",
+	"i18n": "JSON",
 	"releaseScript": "yes",
 	"devServer": "no",
 	"indentation": "Tab",
 	"quotes": "double",
 	"es6class": "yes",
-	"authorName": "DNAngelX",
+	"authorName": "DNAngel",
 	"authorGithub": "DNAngelX",
 	"authorEmail": "stolly82@web.de",
 	"gitRemoteProtocol": "HTTPS",
-	"gitCommit": "no",
+	"gitCommit": "yes",
 	"defaultBranch": "main",
 	"license": "MIT License",
 	"dependabot": "yes",
