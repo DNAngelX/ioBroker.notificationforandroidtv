@@ -88,17 +88,22 @@ Additional command line options for the release script are explained in the
 To get your adapter released in ioBroker, please refer to the documentation 
 of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
 
-### Test the adapter manually with dev-server
-Since you set up `dev-server`, you can use it to run, test and debug your adapter.
+### Test the adapter manually on a local ioBroker installation
+In order to install the adapter locally without publishing, the following steps are recommended:
+1. Create a tarball from your dev directory:  
+	```bash
+	npm pack
+	```
+1. Upload the resulting file to your ioBroker host
+1. Install it locally (The paths are different on Windows):
+	```bash
+	cd /opt/iobroker
+	npm i /path/to/tarball.tgz
+	```
 
-You may start `dev-server` by calling from your dev directory:
-```bash
-dev-server watch
-```
-
-The ioBroker.admin interface will then be available at http://localhost:8089/
-
-Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev-server#command-line) for more details.
+For later updates, the above procedure is not necessary. Just do the following:
+1. Overwrite the changed files in the adapter directory (`/opt/iobroker/node_modules/iobroker.notificationforandroidtv`)
+1. Execute `iobroker upload notificationforandroidtv` on the ioBroker host
 
 ## Changelog
 <!--

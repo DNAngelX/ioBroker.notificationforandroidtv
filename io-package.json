@@ -69,7 +69,7 @@
 		"connectionType": "local",
 		"dataSource": "assumption",
 		"adminUI": {
-			"config": "json"
+			"config": "materialize"
 		},
 		"dependencies": [
 			{
@@ -78,7 +78,7 @@
 		],
 		"globalDependencies": [
 			{
-				"admin": ">=5.1.13"
+				"admin": ">=5.0.0"
 			}
 		]
 	},

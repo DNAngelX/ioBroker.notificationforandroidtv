@@ -24,14 +24,14 @@
 	"connectionIndicator": "no",
 	"language": "JavaScript",
 	"nodeVersion": "16",
-	"adminUi": "json",
+	"adminUi": "html",
 	"tools": [
 		"ESLint",
 		"type checking"
 	],
+	"i18n": "words.js",
 	"releaseScript": "yes",
-	"devServer": "yes",
-	"devServerPort": 8089,
+	"devServer": "no",
 	"indentation": "Tab",
 	"quotes": "double",
 	"es6class": "yes",
