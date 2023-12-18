@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "news": {
+      "2.0.2": {
+        "en": "Ui Button fixed",
+        "de": "Ui Knopf fest",
+        "ru": "Ui Кнопка исправлена",
+        "pt": "Botão Ui fixo",
+        "nl": "Ui Button gerepareerd",
+        "fr": "Bouton Ui fixe",
+        "it": "Pulsante Ui fisso",
+        "es": "Botón Ui fijo",
+        "pl": "Ui Button",
+        "uk": "Кнопка Ui фіксована",
+        "zh-cn": "Ui Button固定"
+      },
       "2.0.1": {
         "en": "Design changes & description",
         "de": "Designänderungen & Beschreibung",
