@@ -1,6 +1,6 @@
 {
   "name": "iobroker.notificationforandroidtv",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
   "author": {
     "name": "DNAngel",

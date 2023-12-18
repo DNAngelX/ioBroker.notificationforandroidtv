@@ -12,30 +12,27 @@
 		"Benachrichtigungen",
 		"Fire TV"
 	],
-	"expert": "yes",
+	"expert": "no",
 	"features": [
 		"adapter"
 	],
-	"adminFeatures": [
-		"tab",
-		"custom"
-	],
+	"adminFeatures": [],
 	"type": "messaging",
 	"startMode": "daemon",
 	"connectionType": "local",
-	"dataSource": "assumption",
+	"dataSource": "poll",
 	"connectionIndicator": "no",
 	"language": "JavaScript",
 	"nodeVersion": "16",
 	"adminUi": "html",
-	"tabReact": "no",
 	"tools": [
 		"ESLint",
 		"type checking"
 	],
-	"i18n": "JSON",
+	"i18n": "words.js",
 	"releaseScript": "yes",
-	"devServer": "no",
+	"devServer": "yes",
+	"devServerPort": 8081,
 	"indentation": "Tab",
 	"quotes": "double",
 	"es6class": "yes",
@@ -43,7 +40,7 @@
 	"authorGithub": "DNAngelX",
 	"authorEmail": "stolly82@web.de",
 	"gitRemoteProtocol": "HTTPS",
-	"gitCommit": "yes",
+	"gitCommit": "no",
 	"defaultBranch": "main",
 	"license": "MIT License",
 	"dependabot": "yes",

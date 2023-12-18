@@ -7,9 +7,12 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+var adapter = utils.adapter('notificationforandroidtv');
+const axios = require('axios');
+let dev  = [];
 
 // Load your modules here, e.g.:
-// const fs = require("fs");
+//const fs = require("fs");
 
 class Notificationforandroidtv extends utils.Adapter {
 
@@ -28,61 +31,136 @@ class Notificationforandroidtv extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
+	async writeChannelDataToIoBroker(channelParentPath, channelName, value, channelType, channelRole, createObjectInitally,createObjectInitallyUnit,createObjectInitallyStates) {
+        if(channelParentPath != null){
+            channelParentPath = channelParentPath;
+        }
+        if(createObjectInitally && createObjectInitallyUnit){
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+                type: 'state',
+                common: {
+                    name: channelName,
+                    type: channelType,
+                    role: channelRole,
+                    unit: createObjectInitallyUnit,
+                    read: true,
+                    write: true,
+                    
+                },
+                native: {},
+            });
+        } else if(createObjectInitally && createObjectInitallyStates){
+            //createObjectInitallyStates =  {"2": "Entladen", "1": "BLA"}
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+                type: 'state',
+                common: {
+                    name: channelName,
+                    type: channelType,
+                    role: channelRole,
+                    states: createObjectInitallyStates,
+                    read: true,
+                    write: true,
+                    
+                },
+                native: {},
+            });
+        } else if(createObjectInitally){
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+                type: 'state',
+                common: {
+                    name: channelName,
+                    type: channelType,
+                    role: channelRole,
+                    read: true,
+                    write: true,
+                    
+                },
+                native: {},
+            });
+            await this.setObjectNotExistsAsync(channelParentPath, {
+                type: 'channel',
+                common: {
+                    name: channelParentPath,
+                    
+                },
+                native: {},
+            });
+        }
+        let stateVal = await adapter.getStateAsync(`${channelParentPath}.${channelName}`);
+        stateVal ? stateVal = stateVal.val : '';
+
+        
+        if((value != undefined || value != null) && stateVal === null){
+        	
+    		await this.setStateAsync(channelParentPath + '.' + channelName, value, true);
+        	
+        }
+    }
+
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
+
 	async onReady() {
 		// Initialize your adapter here
 
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
-		this.log.info("config option1: " + this.config.option1);
-		this.log.info("config option2: " + this.config.option2);
+		const dev = adapter.config.keys;
 
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-		await this.setObjectNotExistsAsync("testVariable", {
-			type: "state",
-			common: {
-				name: "testVariable",
-				type: "boolean",
-				role: "indicator",
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
+		if (dev) {
+	        for (const key in dev) {
 
+	        	let androidTv = dev[key];
+	            
+	            
+	            
+	            //const deviceFolder = 'IP: '+ androidTv;
+	            const deviceFolder = androidTv.ip.replaceAll('.', '_');
+
+				
+
+				//let initialCreate =  await adapter.getStatesAsync(deviceFolder) != undefined ? false : true;
+				let initialCreate =  true;
+
+				const positions = {
+	                0:"BOTTOM_RIGHT",
+	                1:"BOTTOM_LEFT",
+	                2:"TOP_RIGHT",
+	                3:"TOP_LEFT",
+	                4:"CENTER"
+	            };
+	            const transparencies = {
+	                0:"Standard",
+	                1:"0 %",
+	                2:"25 %",
+	                3:"50 %",
+	                4:"75 %",
+	                5:"100 %"
+	            };
+
+	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', '','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'IoBkoker Message','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration',15, 'number', 'indicator',initialCreate,'s');
+		        //await this.writeChannelDataToIoBroker(deviceFolder, 'color', '#607d8b','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', androidTv.ip,'string','indicator',initialCreate);
+		        //await this.writeChannelDataToIoBroker(deviceFolder, 'interrupt', false,'boolean','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', 0,'number','indicator',initialCreate,null,transparencies);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'position',0, 'number', 'indicator',initialCreate,null,positions);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 0,'number', 'indicator',initialCreate);
+
+		        await this.subscribeStates(deviceFolder+'.message');
+
+	        }
+	    } else {
+	        adapter.log.error('No AndroidTV`s configurated, please add a device');
+	    }
+	
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates("testVariable");
+		//this.subscribeStates("testVariable");
 		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
 		// this.subscribeStates("lights.*");
 		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
 		// this.subscribeStates("*");
 
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync("testVariable", true);
-
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync("testVariable", { val: true, ack: true });
-
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
-
-		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync("admin", "iobroker");
-		this.log.info("check user admin pw iobroker: " + result);
-
-		result = await this.checkGroupAsync("admin", "admin");
-		this.log.info("check group user admin group admin: " + result);
 	}
 
 	/**
@@ -103,57 +181,67 @@ class Notificationforandroidtv extends utils.Adapter {
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  * @param {string} id
-	//  * @param {ioBroker.Object | null | undefined} obj
-	//  */
-	// onObjectChange(id, obj) {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
-
 	/**
 	 * Is called if a subscribed state changes
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
+		
+		
 		if (state) {
 			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.notify(id, state);
+
+			adapter.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
-			this.log.info(`state ${id} deleted`);
+			adapter.log.info(`state ${id} deleted`);
 		}
 	}
 
-	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
-	// /**
-	//  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-	//  * Using this method requires "common.messagebox" property to be set to true in io-package.json
-	//  * @param {ioBroker.Message} obj
-	//  */
-	// onMessage(obj) {
-	// 	if (typeof obj === "object" && obj.message) {
-	// 		if (obj.command === "send") {
-	// 			// e.g. send email or pushover or whatever
-	// 			this.log.info("send command");
+	
+	async notify(id, msg) {
 
-	// 			// Send response in callback if required
-	// 			if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
-	// 		}
-	// 	}
-	// }
+		console.error('Notify fired!');
+
+		const myObjectArray = id.split(".", 3);
+
+		let device = myObjectArray.join('.');
+
+		let title = await adapter.getStateAsync(device + '.title');
+		let duration = await adapter.getStateAsync(device + '.duration');
+		let position = await adapter.getStateAsync(device + '.position');
+		//let interrupt = await adapter.getStateAsync(device + '.interrupt');
+		let transparency = await adapter.getStateAsync(device + '.transparency');
+		let type = await adapter.getStateAsync(device + '.type');
+		//let color = await adapter.getStateAsync(device + '.color');
+		let ip = await adapter.getStateAsync(device + '.ip');
+		
+		
+		axios.post(`http://${ip.val}:7676
+			?msg=`+msg.val+
+			'&title='+title.val+
+			'&duration='+duration.val+
+			'&position='+position.val+
+			//'&interrupt='+interrupt.val+
+			'&transparency='+transparency.val+
+			'&type='+type.val
+			//'&bkgcolor='+color.val
+			,msg
+	    )
+	    .then(response => {
+	        console.log(`Notify successful! (${response.status})`);
+	    })
+	    .catch(error => {
+	        console.error(`Notify failed for :${ip}`, error.message);
+	    });
+	}
+
 
 }
+
+
 
 if (require.main !== module) {
 	// Export the constructor in compact mode
@@ -165,3 +253,5 @@ if (require.main !== module) {
 	// otherwise start the instance directly
 	new Notificationforandroidtv();
 }
+
+
