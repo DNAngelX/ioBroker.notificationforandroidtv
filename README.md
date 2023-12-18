@@ -1,4 +1,3 @@
-
 ![Logo](admin/notificationforandroidtv.png)
 # ioBroker.notificationforandroidtv
 
@@ -12,8 +11,7 @@ During setup, note that there are two distinct apps: one for your smartphone (wh
 
 ## Changelog
 * 1.0.0 (DNAngel) Initial Release
-
-### **WORK IN PROGRESS**
+### 2.0.0 (2023-12-18)
 * (DNAngel) initial release
 
 ## License

@@ -1,91 +1,104 @@
 {
-	"common": {
-		"name": "notificationforandroidtv",
-		"version": "1.0.0",
-		"news": {
-			"1.0.0": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"uk": "Початкова версія",
-				"zh-cn": "首次出版"
-			}
-		},
-		"title": "Notification for AndroidTv and FireTV",
-		"titleLang": {
-			"en": "Notification for AndroidTv and FireTV",
-			"de": "Benachrichtigung für AndroidTv und FireTV",
-			"ru": "Уведомление для AndroidTv и FireTV",
-			"pt": "Notificação para AndroidTv e FireTV",
-			"nl": "Melding voor AndroidTv en FireTV",
-			"fr": "Notification pour AndroidTv et FireTV",
-			"it": "Notifica per AndroidTv e FireTV",
-			"es": "Notificación para AndroidTv y FireTV",
-			"pl": "Powiadomienie dla AndroidTv i FireTV",
-			"uk": "Сповіщення для AndroidTv і FireTV",
-			"zh-cn": "AndroidTv 和 FireTV 的通知"
-		},
-		"desc": {
-			"en": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
-			"de": "Die Benachrichtigungsintegration für IoBroker umfasst Unterstützung für Benachrichtigungen für Android TV und Benachrichtigungen für Fire TV.",
-			"ru": "Интеграция уведомлений для IoBroker включает поддержку уведомлений для Android TV и уведомлений для Fire TV.",
-			"pt": "A integração de notificações para IoBroker inclui suporte para notificações para Android TV e notificações para Fire TV.",
-			"nl": "Meldingsintegratie voor IoBroker omvat ondersteuning voor meldingen voor Android TV en meldingen voor Fire TV.",
-			"fr": "L'intégration des notifications pour IoBroker inclut la prise en charge des notifications pour Android TV et des notifications pour Fire TV.",
-			"it": "L'integrazione delle notifiche per IoBroker include il supporto per le notifiche per Android TV e le notifiche per Fire TV.",
-			"es": "La integración de notificaciones para IoBroker incluye soporte para Notificaciones para Android TV y Notificaciones para Fire TV.",
-			"pl": "Integracja powiadomień dla IoBroker obejmuje obsługę powiadomień dla Android TV i powiadomień dla Fire TV.",
-			"uk": "Інтеграція сповіщень для IoBroker включає підтримку сповіщень для Android TV і сповіщень для Fire TV.",
-			"zh-cn": "IoBroker 的通知集成包括对 Android TV 通知和 Fire TV 通知的支持。"
-		},
-		"authors": [
-			"DNAngel <stolly82@web.de>"
-		],
-		"keywords": [
-			"Notification",
-			"TV",
-			"Android",
-			"Alexa",
-			"Benachrichtigungen",
-			"Fire TV"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "notificationforandroidtv.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/DNAngelX/ioBroker.notificationforandroidtv/main/admin/notificationforandroidtv.png",
-		"readme": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv/blob/main/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "messaging",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"adminUI": {
-			"config": "materialize"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=3.3.22"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=5.0.0"
-			}
-		]
-	},
-	"native": {
-		"option1": true,
-		"option2": "42"
-	},
-	"objects": [],
-	"instanceObjects": []
+  "common": {
+    "name": "notificationforandroidtv",
+    "version": "2.0.0",
+    "news": {
+      "2.0.0": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "начальный выпуск",
+        "pt": "lançamento inicial",
+        "nl": "niet",
+        "fr": "initial release",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "pierwsze wydanie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "1.0.0": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
+    },
+    "title": "Notification for AndroidTv and FireTV",
+    "titleLang": {
+      "en": "Notification for AndroidTv and FireTV",
+      "de": "Benachrichtigung für AndroidTv und FireTV",
+      "ru": "Уведомление для AndroidTv и FireTV",
+      "pt": "Notificação para AndroidTv e FireTV",
+      "nl": "Melding voor AndroidTv en FireTV",
+      "fr": "Notification pour AndroidTv et FireTV",
+      "it": "Notifica per AndroidTv e FireTV",
+      "es": "Notificación para AndroidTv y FireTV",
+      "pl": "Powiadomienie dla AndroidTv i FireTV",
+      "uk": "Сповіщення для AndroidTv і FireTV",
+      "zh-cn": "AndroidTv 和 FireTV 的通知"
+    },
+    "desc": {
+      "en": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
+      "de": "Die Benachrichtigungsintegration für IoBroker umfasst Unterstützung für Benachrichtigungen für Android TV und Benachrichtigungen für Fire TV.",
+      "ru": "Интеграция уведомлений для IoBroker включает поддержку уведомлений для Android TV и уведомлений для Fire TV.",
+      "pt": "A integração de notificações para IoBroker inclui suporte para notificações para Android TV e notificações para Fire TV.",
+      "nl": "Meldingsintegratie voor IoBroker omvat ondersteuning voor meldingen voor Android TV en meldingen voor Fire TV.",
+      "fr": "L'intégration des notifications pour IoBroker inclut la prise en charge des notifications pour Android TV et des notifications pour Fire TV.",
+      "it": "L'integrazione delle notifiche per IoBroker include il supporto per le notifiche per Android TV e le notifiche per Fire TV.",
+      "es": "La integración de notificaciones para IoBroker incluye soporte para Notificaciones para Android TV y Notificaciones para Fire TV.",
+      "pl": "Integracja powiadomień dla IoBroker obejmuje obsługę powiadomień dla Android TV i powiadomień dla Fire TV.",
+      "uk": "Інтеграція сповіщень для IoBroker включає підтримку сповіщень для Android TV і сповіщень для Fire TV.",
+      "zh-cn": "IoBroker 的通知集成包括对 Android TV 通知和 Fire TV 通知的支持。"
+    },
+    "authors": [
+      "DNAngel <stolly82@web.de>"
+    ],
+    "keywords": [
+      "Notification",
+      "TV",
+      "Android",
+      "Alexa",
+      "Benachrichtigungen",
+      "Fire TV"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "notificationforandroidtv.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/DNAngelX/ioBroker.notificationforandroidtv/main/admin/notificationforandroidtv.png",
+    "readme": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "messaging",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "materialize"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.0.0"
+      }
+    ]
+  },
+  "native": {
+    "option1": true,
+    "option2": "42"
+  },
+  "objects": [],
+  "instanceObjects": []
 }
