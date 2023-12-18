@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "news": {
+      "2.0.1": {
+        "en": "Design changes & description",
+        "de": "Designänderungen & Beschreibung",
+        "ru": "Изменения дизайна & описание",
+        "pt": "Alterações de design e descrição",
+        "nl": "Design wijzigt",
+        "fr": "Changements de conception et description",
+        "it": "Cambiamenti di design e descrizione",
+        "es": "Cambios de diseño y descripción",
+        "pl": "Zmiany i opisy",
+        "uk": "Проектні зміни та опис",
+        "zh-cn": "设计变化和说明"
+      },
       "2.0.0": {
         "en": "initial release",
         "de": "erstausstrahlung",
