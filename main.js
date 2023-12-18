@@ -138,7 +138,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	            };
 
 	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', '','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'IoBkoker Message','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'ioBroker Message','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration',15, 'number', 'indicator',initialCreate,'s');
 		        //await this.writeChannelDataToIoBroker(deviceFolder, 'color', '#607d8b','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', androidTv.ip,'string','indicator',initialCreate);
