@@ -1,5 +1,5 @@
 ![Logo](admin/notificationforandroidtv.png)
-# ioBroker.notificationforandroidtv
+# ioBroker.notificationforandroidtv - Benachrichtigungsintegration für Android TV/Fire TV
 
 [![NPM](https://nodei.co/npm/iobroker.notificationforandroidtv.png?downloads=true)](https://nodei.co/npm/iobroker.notificationforandroidtv/)
 
@@ -9,8 +9,38 @@ These notifications operate within the global scope of your Android TV device, a
 
 During setup, note that there are two distinct apps: one for your smartphone (which isn't necessary for this platform) and another for your Android TV device to receive notifications. The app required for displaying notifications sent from IoBroker is available in the store of your Android TV device. Any in-app purchases are exclusive to the client for Android smartphones and do not restrict pushing notifications from IoBroker.
 
+
+## Beschreibung
+Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benachrichtigungen an Android TV- und Fire TV-Geräte. Diese Integration ermöglicht die Anzeige anpassbarer Nachrichtenüberlagerungen für eine spezifizierte Dauer auf dem Bildschirm des TV-Geräts. Darüber hinaus kann sie Bilder, wie z. B. von Sicherheitskameras, und benutzerdefinierte Icons anzeigen.
+
+## Schritte zur Einrichtung:
+
+### 1. Adaptereinstellungen:
+- Gehe zu den Adaptereinstellungen in der IoBroker-Oberfläche.
+- Füge die IP-Adressen der Zielgeräte hinzu und gib ihnen Namen für die Identifizierung.
+
+### 2. Lade die App auf deinem Android TV / Fire TV:
+- Lade die App "Notifications for Android TV" für Android TV-Geräte von [Google Play](https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google) herunter.
+- Lade die App "Notifications for Fire TV" für Fire TV-Geräte von [Amazon](https://www.amazon.com/Christian-Fees-Notifications-for-Fire/dp/B00OESCXEK) herunter.
+
+### 3. Erstellung von Objekten mit den folgenden Einstellungen:
+
+| Einstellung    | Beschreibung                                | Beispielwert              |
+| -------------- | ------------------------------------------- | ------------------------- |
+| duration       | Anzeigedauer in Sekunden                    | 10 s                       |
+| ip             | IP-Adresse des TV-Geräts                    | 192.168.0.100             |
+| message        | Nachricht, die gesendet werden soll         | "Testnachricht"           |
+| position       | Position auf dem TV-Bildschirm              | 0 = "BOTTOM_RIGHT"            |
+| title          | Titel der Nachricht                         | "Wichtige Benachrichtigung"|
+| transparency   | Transparenz des Overlays                    | 25                       |
+| type           | Anzeigetyp des Overlays                     | 0,1,2,3,4,5,6,7,8         |
+
+### 4. Senden von Nachrichten:
+- Sobald im Objekt "message" eine Nachricht eingetragen wird, wird diese an das TV-Gerät gesendet.
+
+
 ## Changelog
-* 1.0.0 (DNAngel) Initial Release
+
 ### 2.0.0 (2023-12-18)
 * (DNAngel) initial release
 
