@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "news": {
+      "2.0.3": {
+        "en": "Typo fix",
+        "de": "Typo fix",
+        "ru": "Typo исправить",
+        "pt": "Correção de tipo",
+        "nl": "Typo",
+        "fr": "Correction du typo",
+        "it": "Correzione del tipo",
+        "es": "Typo fix",
+        "pl": "Typowo",
+        "uk": "Фіксація типо",
+        "zh-cn": "Typo fix"
+      },
       "2.0.2": {
         "en": "Ui Button fixed",
         "de": "Ui Knopf fest",
