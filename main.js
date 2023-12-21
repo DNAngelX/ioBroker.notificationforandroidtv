@@ -31,12 +31,12 @@ class Notificationforandroidtv extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
-	async writeChannelDataToIoBroker(channelParentPath, channelName, value, channelType, channelRole, createObjectInitally,createObjectInitallyUnit,createObjectInitallyStates) {
+	async writeChannelDataToIoBroker(channelParentPath, id ,channelName, value, channelType, channelRole, createObjectInitally,createObjectInitallyUnit,createObjectInitallyStates,readOnly) {
         if(channelParentPath != null){
             channelParentPath = channelParentPath;
         }
         if(createObjectInitally && createObjectInitallyUnit){
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
                 common: {
                     name: channelName,
@@ -44,35 +44,37 @@ class Notificationforandroidtv extends utils.Adapter {
                     role: channelRole,
                     unit: createObjectInitallyUnit,
                     read: true,
-                    write: true,
+                    write: readOnly ? false : true,
                     
                 },
                 native: {},
             });
         } else if(createObjectInitally && createObjectInitallyStates){
             //createObjectInitallyStates =  {"2": "Entladen", "1": "BLA"}
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
                 common: {
+                    id: id,
                     name: channelName,
                     type: channelType,
                     role: channelRole,
                     states: createObjectInitallyStates,
                     read: true,
-                    write: true,
+                    write: readOnly ? false : true,
                     
                 },
                 native: {},
             });
         } else if(createObjectInitally){
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + channelName, {
+            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
                 common: {
+                	id: id,
                     name: channelName,
                     type: channelType,
                     role: channelRole,
                     read: true,
-                    write: true,
+                    write: readOnly ? false : true,
                     
                 },
                 native: {},
@@ -86,13 +88,13 @@ class Notificationforandroidtv extends utils.Adapter {
                 native: {},
             });
         }
-        let stateVal = await adapter.getStateAsync(`${channelParentPath}.${channelName}`);
+        let stateVal = await adapter.getStateAsync(`${channelParentPath}.${id}`);
         stateVal ? stateVal = stateVal.val : '';
 
         
         if((value != undefined || value != null) && stateVal === null){
         	
-    		await this.setStateAsync(channelParentPath + '.' + channelName, value, true);
+    		await this.setStateAsync(channelParentPath + '.' + id, value, true);
         	
         }
     }
@@ -136,16 +138,53 @@ class Notificationforandroidtv extends utils.Adapter {
 	                4:"75 %",
 	                5:"100 %"
 	            };
+	            const types = {
+	                0:"Standard",
+	                1:"ONLY_TITLE",
+	                2:"ONLY_ICON"
+	            };
+	            const bkgcolor = {
+	                0:"dirt blue",
+	                1:"black",
+	                2:"blue",
+	                3:"green",
+	                4:"red",
+	                5:"light blue",
+	                6:"turquoise",
+	                7:"orange",
+	                8:"purple"
+	            };
+	            const icon = {
+	                0:"( i )",
+	                1:"/ ! \\",
+	                2:"( ! )",
+	                3:"( x )",
+	                4:"( ? )",
+	                5:":-)"
+	            };
 
-	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', '','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'ioBroker Message','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration',15, 'number', 'indicator',initialCreate,'s');
-		        //await this.writeChannelDataToIoBroker(deviceFolder, 'color', '#607d8b','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', androidTv.ip,'string','indicator',initialCreate);
-		        //await this.writeChannelDataToIoBroker(deviceFolder, 'interrupt', false,'boolean','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', 0,'number','indicator',initialCreate,null,transparencies);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'position',0, 'number', 'indicator',initialCreate,null,positions);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 0,'number', 'indicator',initialCreate);
+	            const width = {
+	                0:"Standard",
+	                1:"very small",
+	                2:"small",
+	                3:"large",
+	                4:"extra large"
+	            };
+
+	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', 'Nachricht', '','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'Titel der Nachricht','ioBroker Message','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration','Anzeigedauer',15, 'number', 'indicator',initialCreate,'s');
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', 'Farbe','0','string','indicator',initialCreate,null,bkgcolor);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', 'IP Adresse',androidTv.ip,'string','indicator',initialCreate,null,null,true);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'icon', 'Icon wenn iconurl leer',0,'number','indicator',initialCreate,null,icon);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', 'Transparenz',0,'number','indicator',initialCreate,null,transparencies);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'position','Overlay Position',0, 'number', 'indicator',initialCreate,null,positions);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 'Overlay Type',0,'number', 'indicator',initialCreate,null,types);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', 'Image Größe',0,'number', 'indicator',initialCreate,null,width);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'imageurl', 'Bild URL','','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'iconurl','Icon URL','','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_image','Bild nach senden löschen',false,'boolean','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_icon','Icon nach senden löschen',false,'boolean','indicator',initialCreate);
 
 		        await this.subscribeStates(deviceFolder+'.message');
 
@@ -212,25 +251,37 @@ class Notificationforandroidtv extends utils.Adapter {
 		let title = await adapter.getStateAsync(device + '.title');
 		let duration = await adapter.getStateAsync(device + '.duration');
 		let position = await adapter.getStateAsync(device + '.position');
-		//let interrupt = await adapter.getStateAsync(device + '.interrupt');
+		let width = await adapter.getStateAsync(device + '.width');
 		let transparency = await adapter.getStateAsync(device + '.transparency');
 		let type = await adapter.getStateAsync(device + '.type');
-		//let color = await adapter.getStateAsync(device + '.color');
+		let color = await adapter.getStateAsync(device + '.color');
 		let ip = await adapter.getStateAsync(device + '.ip');
+		let icon = await adapter.getStateAsync(device + '.icon');
+		let iconurl = await adapter.getStateAsync(device + '.iconurl');
+		let imageurl = await adapter.getStateAsync(device + '.imageurl');
+		let delete_image = await adapter.getStateAsync(device + '.delete_image');
+		let delete_icon = await adapter.getStateAsync(device + '.delete_icon');
+		
 		
 		
 		axios.post(`http://${ip.val}:7676
-			?msg=`+msg.val+
+			?msg=`+msg.val.replace(/\n/gi,'<br>')+
 			'&title='+title.val+
 			'&duration='+duration.val+
 			'&position='+position.val+
-			//'&interrupt='+interrupt.val+
+			'&width='+width.val+
 			'&transparency='+transparency.val+
-			'&type='+type.val
-			//'&bkgcolor='+color.val
+			'&type='+type.val+
+			'&bkgcolor='+color.val+
+			'&icon='+icon.val+
+			'&iconurl='+iconurl.val+
+			'&imageurl='+imageurl.val
 			,msg
 	    )
 	    .then(response => {
+	    	delete_image.val == true ? this.setStateAsync(device + '.imageurl', '', true) : '';
+	    	delete_icon.val == true ? this.setStateAsync(device + '.iconurl', '', true) : '';
+	    	
 	        console.log(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
