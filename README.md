@@ -33,13 +33,28 @@ Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benac
 | position       | Position auf dem TV-Bildschirm              | 0 = "BOTTOM_RIGHT"            |
 | title          | Titel der Nachricht                         | "Wichtige Benachrichtigung"|
 | transparency   | Transparenz des Overlays                    | 25                       |
-| type           | Anzeigetyp des Overlays                     | 0,1,2,3,4,5,6,7,8         |
+| type           | Anzeigetyp des Overlays                     | Standard, ONLY_TITLE, ONLY_ICON         |
+| color           | Farbe                   | blue, green,...|
+| icon           | Icon Auswahl                   | ! ? :-) |
+| iconurl           | URL Icon                   | http://192.168.20.111/myIcon.png |
+| delete_icon           | Icon URL nach senden leeren                   | true | false |
+| imageurl           | URL Bild                   | http://192.168.20.111/myImage.png |
+| delete_image           | Bild URL nach senden leeren                   | true | false |
+
+
+
 
 ### 4. Senden von Nachrichten:
 - Sobald im Objekt "message" eine Nachricht eingetragen wird, wird diese an das TV-Gerät gesendet.
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+* (DNAngel) color added
+* (DNAngel) icon & icon_url added
+* (DNAngel) image & image_url added
+
 ### 2.0.3 (2023-12-18)
 * (ldittmar81) Typo fix
 
