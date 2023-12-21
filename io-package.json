@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "news": {
+      "2.1.2": {
+        "en": "small small translation issues",
+        "de": "kleine übersetzungsprobleme",
+        "ru": "небольшие вопросы перевода",
+        "pt": "pequenas questões de tradução",
+        "nl": "kleine vertalingsproblemen",
+        "fr": "petites questions de traduction",
+        "it": "piccoli problemi di traduzione",
+        "es": "pequeños problemas de traducción",
+        "pl": "małe tłumaczenie",
+        "uk": "дрібні питання перекладу",
+        "zh-cn": "小型翻译问题"
+      },
       "2.1.1": {
         "en": "device name added",
         "de": "produktname hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "pierwsze wydanie",
         "uk": "початковий реліз",
         "zh-cn": "初步释放"
-      },
-      "1.0.0": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
