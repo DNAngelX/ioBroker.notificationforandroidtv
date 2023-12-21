@@ -49,6 +49,9 @@ Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benac
 
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (DNAngel) small small translation issues
+
 ### 2.1.1 (2023-12-21)
 * (DNAngel) device name added
 

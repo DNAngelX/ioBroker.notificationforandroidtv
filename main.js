@@ -136,7 +136,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	                2:"ONLY_ICON"
 	            };
 	            const bkgcolor = {
-	                0:"dirt blue",
+	                0:"neutral blue",
 	                1:"black",
 	                2:"blue",
 	                3:"green",
@@ -175,13 +175,13 @@ class Notificationforandroidtv extends utils.Adapter {
 	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', 'Nachricht', '','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'Titel der Nachricht','ioBroker Message','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration','Anzeigedauer',15, 'number', 'indicator',initialCreate,'s');
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', 'Farbe','0','string','indicator',initialCreate,null,bkgcolor);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', 'Farbe','8','string','indicator',initialCreate,null,bkgcolor);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', 'IP Adresse',androidTv.ip,'string','indicator',initialCreate,null,null,true);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'icon', 'Icon wenn iconurl leer',0,'number','indicator',initialCreate,null,icon);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', 'Transparenz',0,'number','indicator',initialCreate,null,transparencies);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'position','Overlay Position',0, 'number', 'indicator',initialCreate,null,positions);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 'Overlay Type',0,'number', 'indicator',initialCreate,null,types);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', 'Image Größe',0,'number', 'indicator',initialCreate,null,width);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', 'Overlay Größe',0,'number', 'indicator',initialCreate,null,width);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'imageurl', 'Bild URL','','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'iconurl','Icon URL','','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_image','Bild nach senden löschen',false,'boolean','indicator',initialCreate);
