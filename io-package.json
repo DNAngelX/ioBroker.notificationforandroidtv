@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "news": {
+      "2.1.1": {
+        "en": "device name added",
+        "de": "produktname hinzugefügt",
+        "ru": "имя устройства добавлено",
+        "pt": "nome do dispositivo adicionado",
+        "nl": "apparaatnaam toegevoegd",
+        "fr": "nom du dispositif ajouté",
+        "it": "nome del dispositivo aggiunto",
+        "es": "nombre del dispositivo añadido",
+        "pl": "nazwa dodana",
+        "uk": "додано назву пристрою",
+        "zh-cn": "装置名称"
+      },
       "2.1.0": {
         "en": "color added\nicon & icon_url added\nimage & image_url added",
         "de": "farbe hinzugefügt\nicon & icon_url hinzugefügt\nbild und bild hinzugefügt",
