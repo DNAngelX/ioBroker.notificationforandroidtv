@@ -50,11 +50,9 @@ class Notificationforandroidtv extends utils.Adapter {
                 native: {},
             });
         } else if(createObjectInitally && createObjectInitallyStates){
-            //createObjectInitallyStates =  {"2": "Entladen", "1": "BLA"}
             await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
                 common: {
-                    id: id,
                     name: channelName,
                     type: channelType,
                     role: channelRole,
@@ -69,7 +67,6 @@ class Notificationforandroidtv extends utils.Adapter {
             await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
                 common: {
-                	id: id,
                     name: channelName,
                     type: channelType,
                     role: channelRole,
@@ -79,14 +76,8 @@ class Notificationforandroidtv extends utils.Adapter {
                 },
                 native: {},
             });
-            await this.setObjectNotExistsAsync(channelParentPath, {
-                type: 'channel',
-                common: {
-                    name: channelParentPath,
-                    
-                },
-                native: {},
-            });
+          
+            
         }
         let stateVal = await adapter.getStateAsync(`${channelParentPath}.${id}`);
         stateVal ? stateVal = stateVal.val : '';
@@ -117,6 +108,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	            
 	            //const deviceFolder = 'IP: '+ androidTv;
 	            const deviceFolder = androidTv.ip.replaceAll('.', '_');
+	            const deviceName = androidTv.name;
 
 				
 
@@ -170,6 +162,15 @@ class Notificationforandroidtv extends utils.Adapter {
 	                3:"large",
 	                4:"extra large"
 	            };
+
+	            await this.setObjectNotExistsAsync(deviceFolder, {
+	                type: 'channel',
+	                common: {
+	                    name: deviceName,
+	                    
+	                },
+	                native: {},
+	            });
 
 	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', 'Nachricht', '','string','indicator',initialCreate);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'Titel der Nachricht','ioBroker Message','string','indicator',initialCreate);

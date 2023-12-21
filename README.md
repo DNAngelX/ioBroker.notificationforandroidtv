@@ -37,9 +37,9 @@ Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benac
 | color           | Farbe                   | blue, green,...|
 | icon           | Icon Auswahl                   | ! ? :-) |
 | iconurl           | URL Icon                   | http://192.168.20.111/myIcon.png |
-| delete_icon           | Icon URL nach senden leeren                   | true | false |
+| delete_icon           | Icon URL nach senden leeren                   | true / false |
 | imageurl           | URL Bild                   | http://192.168.20.111/myImage.png |
-| delete_image           | Bild URL nach senden leeren                   | true | false |
+| delete_image           | Bild URL nach senden leeren                   | true / false |
 
 
 
@@ -49,6 +49,9 @@ Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benac
 
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (DNAngel) device name added
+
 ### 2.1.0 (2023-12-21)
 * (DNAngel) color added
 * (DNAngel) icon & icon_url added
