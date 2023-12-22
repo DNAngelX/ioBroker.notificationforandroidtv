@@ -32,9 +32,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	}
 
 	async writeChannelDataToIoBroker(channelParentPath, id ,channelName, value, channelType, channelRole, createObjectInitally,createObjectInitallyUnit,createObjectInitallyStates,readOnly) {
-        if(channelParentPath != null){
-            channelParentPath = channelParentPath;
-        }
+        
         if(createObjectInitally && createObjectInitallyUnit){
             await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
                 type: 'state',
@@ -172,20 +170,164 @@ class Notificationforandroidtv extends utils.Adapter {
 	                native: {},
 	            });
 
-	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', 'Nachricht', '','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', 'Titel der Nachricht','ioBroker Message','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration','Anzeigedauer',15, 'number', 'indicator',initialCreate,'s');
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', 'Farbe','8','string','indicator',initialCreate,null,bkgcolor);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', 'IP Adresse',androidTv.ip,'string','indicator',initialCreate,null,null,true);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'icon', 'Icon wenn iconurl leer',0,'number','indicator',initialCreate,null,icon);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', 'Transparenz',0,'number','indicator',initialCreate,null,transparencies);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'position','Overlay Position',0, 'number', 'indicator',initialCreate,null,positions);
+	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', {
+																			  "en": "Message",
+																			  "de": "Nachricht",
+																			  "ru": "Сообщение",
+																			  "pt": "Mensagem",
+																			  "nl": "Bericht",
+																			  "fr": "Message",
+																			  "it": "Messaggio",
+																			  "es": "Mensaje",
+																			  "pl": "Message",
+																			  "uk": "Новини",
+																			  "zh-cn": "导 言"
+																			}, '','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', {
+																			  "en": "Message Title",
+																			  "de": "Nachricht Titel",
+																			  "ru": "Название сообщения",
+																			  "pt": "Título da Mensagem",
+																			  "nl": "Bericht Tit",
+																			  "fr": "Titre du message",
+																			  "it": "Titolo del messaggio",
+																			  "es": "Título del mensaje",
+																			  "pl": "Tytuł",
+																			  "uk": "Назва повідомлення",
+																			  "zh-cn": "标题"
+																			},'ioBroker Message','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration',{
+																			  "en": "Display duration",
+																			  "de": "Anzeigedauer",
+																			  "ru": "Продолжительность дисплея",
+																			  "pt": "Duração da exposição",
+																			  "nl": "Vertaling:",
+																			  "fr": "Durée d ' affichage",
+																			  "it": "Durata dell'esposizione",
+																			  "es": "Duración de la pantalla",
+																			  "pl": "Czas trwania gry",
+																			  "uk": "Тривалість відображення",
+																			  "zh-cn": "A. 期限"
+																			},15, 'number', 'indicator',initialCreate,'s');
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', {
+																			  "en": "Color",
+																			  "de": "Farbe",
+																			  "ru": "Цвет",
+																			  "pt": "Cor",
+																			  "nl": "Color",
+																			  "fr": "Couleur",
+																			  "it": "Colore",
+																			  "es": "Color",
+																			  "pl": "Color",
+																			  "uk": "Колір",
+																			  "zh-cn": "科 法 律"
+																			},'8','string','indicator',initialCreate,null,bkgcolor);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', {
+																			  "en": "IP Address",
+																			  "de": "IP-Adresse",
+																			  "ru": "IP адрес",
+																			  "pt": "Endereço IP",
+																			  "nl": "IP Addres",
+																			  "fr": "Adresse IP",
+																			  "it": "Indirizzo IP",
+																			  "es": "Dirección IP",
+																			  "pl": "IP Address",
+																			  "uk": "IP-адреса",
+																			  "zh-cn": "IP地址"
+																			},androidTv.ip,'string','indicator',initialCreate,null,null,true);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'icon', {
+																			  "en": "Icon if iconurl empty",
+																			  "de": "Icon, wenn iconurl leer ist",
+																			  "ru": "Икона, если iconurl пуст",
+																			  "pt": "Ícone se iconurl vazio",
+																			  "nl": "Icon als iconurle leeg",
+																			  "fr": "Icon si iconurl vide",
+																			  "it": "Icona se iconurl vuoto",
+																			  "es": "Icono si iconoruro vacío",
+																			  "pl": "Icon jeśli ikonur pusty",
+																			  "uk": "Ікона під час іконопису",
+																			  "zh-cn": "Iconurl空"
+																			},0,'number','indicator',initialCreate,null,icon);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', {
+																			  "en": "Transparency",
+																			  "de": "Transparenz",
+																			  "ru": "Прозрачность",
+																			  "pt": "Transparência",
+																			  "nl": "Vertaling:",
+																			  "fr": "Transparence",
+																			  "it": "Trasparenza",
+																			  "es": "Transparencia",
+																			  "pl": "Przejrzystość",
+																			  "uk": "Прозорість",
+																			  "zh-cn": "透明度"
+																			},0,'number','indicator',initialCreate,null,transparencies);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'position',{
+																			  "en": "Overlay Position",
+																			  "de": "Overlay Position",
+																			  "ru": "Overlay позиция",
+																			  "pt": "Posição de sobreposição",
+																			  "nl": "Overlay Position",
+																			  "fr": "Position surmontée",
+																			  "it": "Posizione di sovrapposizione",
+																			  "es": "Posición de superposición",
+																			  "pl": "Overlay",
+																			  "uk": "Позиція",
+																			  "zh-cn": "增加职位"
+																			},0, 'number', 'indicator',initialCreate,null,positions);
 		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 'Overlay Type',0,'number', 'indicator',initialCreate,null,types);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', 'Overlay Größe',0,'number', 'indicator',initialCreate,null,width);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'imageurl', 'Bild URL','','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'iconurl','Icon URL','','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_image','Bild nach senden löschen',false,'boolean','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_icon','Icon nach senden löschen',false,'boolean','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', {
+																			  "en": "Overlay Size",
+																			  "de": "Overlay Größe",
+																			  "ru": "Overlay Размер",
+																			  "pt": "Tamanho de sobreposição",
+																			  "nl": "Vertaling:",
+																			  "fr": "Overlay Taille",
+																			  "it": "Dimensione del sovrapposizione",
+																			  "es": "Superposición tamaño",
+																			  "pl": "Overlay",
+																			  "uk": "Розмір реле",
+																			  "zh-cn": "A. 超支"
+																			},0,'number', 'indicator',initialCreate,null,width);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'imageurl', {
+																			  "en": "image URL",
+																			  "de": "bild URL",
+																			  "ru": "изображение URL",
+																			  "pt": "imagem URL",
+																			  "nl": "beeld URL",
+																			  "fr": "image URL",
+																			  "it": "immagine URL",
+																			  "es": "imagen URL",
+																			  "pl": "obraz URL",
+																			  "uk": "зображення URL",
+																			  "zh-cn": "图像"
+																			},'','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'iconurl','icon URL','','string','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_image',{
+																			  "en": "Delete image after sending",
+																			  "de": "Bild nach Senden löschen",
+																			  "ru": "Удалить изображение после отправки",
+																			  "pt": "Excluir imagem após o envio",
+																			  "nl": "Verwijder beeld na het sturen",
+																			  "fr": "Supprimer l'image après l'envoi",
+																			  "it": "Eliminare l'immagine dopo l'invio",
+																			  "es": "Eliminar imagen después de enviar",
+																			  "pl": "Zdjęcie Delete po wysłaniu",
+																			  "uk": "Видалити зображення після відправлення",
+																			  "zh-cn": "在发送后删去图像"
+																			},false,'boolean','indicator',initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_icon',{
+																			  "en": "Delete icon after sending",
+																			  "de": "Icon nach Senden löschen",
+																			  "ru": "Удалить иконку после отправки",
+																			  "pt": "Excluir ícone após o envio",
+																			  "nl": "Verwijder icon na het sturen",
+																			  "fr": "Supprimer l'icône après l'envoi",
+																			  "it": "Elimina icona dopo l'invio",
+																			  "es": "Eliminar icono después de enviar",
+																			  "pl": "Ikona Delete po wysłaniu",
+																			  "uk": "Видалити іконку після відправлення",
+																			  "zh-cn": "发货后删去一章"
+																			},false,'boolean','indicator',initialCreate);
 
 		        await this.subscribeStates(deviceFolder+'.message');
 
