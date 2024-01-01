@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "news": {
+      "2.2.2": {
+        "en": "Stable release",
+        "de": "Stabile Veröffentlichung",
+        "ru": "Стабильный релиз",
+        "pt": "Lançamento estável",
+        "nl": "Stabiel vrij",
+        "fr": "Sortie stable",
+        "it": "Rilascio stabile",
+        "es": "Stable release",
+        "pl": "Stable release",
+        "uk": "Стабільний реліз",
+        "zh-cn": "公平释放"
+      },
       "2.2.1": {
         "en": "Stable release",
         "de": "Stabile Veröffentlichung",
@@ -80,19 +93,6 @@
         "pl": "Typowo",
         "uk": "Фіксація типо",
         "zh-cn": "Typo fix"
-      },
-      "2.0.2": {
-        "en": "Ui Button fixed",
-        "de": "Ui Knopf fest",
-        "ru": "Ui Кнопка исправлена",
-        "pt": "Botão Ui fixo",
-        "nl": "Ui Button gerepareerd",
-        "fr": "Bouton Ui fixe",
-        "it": "Pulsante Ui fisso",
-        "es": "Botón Ui fijo",
-        "pl": "Ui Button",
-        "uk": "Кнопка Ui фіксована",
-        "zh-cn": "Ui Button固定"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
