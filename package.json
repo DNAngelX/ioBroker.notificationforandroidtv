@@ -2,10 +2,7 @@
   "name": "iobroker.notificationforandroidtv",
   "version": "2.2.2",
   "description": "Notification integration for IoBroker includes support for Notifications for Android TV and Notifications for Fire TV.",
-  "author": {
-    "name": "DNAngel",
-    "email": "stolly82@web.de"
-  },
+  "author": "DNAngel <stolly82@web.de>",
   "homepage": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv",
   "license": "MIT",
   "keywords": [
@@ -18,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv.git"
+    "url": "git+https://github.com/DNAngelX/ioBroker.notificationforandroidtv.git"
   },
   "engines": {
     "node": ">= 16"
@@ -73,5 +70,8 @@
   "bugs": {
     "url": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv/issues"
   },
-  "readmeFilename": "README.md"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
