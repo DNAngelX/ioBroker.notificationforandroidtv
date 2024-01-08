@@ -1,4 +1,3 @@
-
 ![Logo](admin/notificationforandroidtv.png)
 # ioBroker.notificationforandroidtv - Benachrichtigungsintegration für Android TV/Fire TV
 
@@ -102,8 +101,7 @@ Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **pay
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 2.3.0 (2024-01-08)
 * (DNAngel) extended payload possibility as message object
 
 ### 2.2.2 (2024-01-01)

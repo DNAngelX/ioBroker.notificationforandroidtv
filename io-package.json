@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.2.2",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "extended payload possibility as message object",
+        "de": "erweiterte nutzlastmöglichkeit als nachrichtenobjekt",
+        "ru": "расширенная возможность загрузки как объект сообщения",
+        "pt": "possibilidade de carga útil estendida como objeto de mensagem",
+        "nl": "extended payload mogelijkheid als bericht object",
+        "fr": "possibilité de charge utile prolongée comme objet de message",
+        "it": "possibilità di payload estesa come oggetto messaggio",
+        "es": "posibilidad de carga útil ampliada como objeto de mensaje",
+        "pl": "rozszerzona możliwość obciążenia użytkowego jako obiekt wiadomości",
+        "uk": "розширена можливість завантаження повідомлень як об'єкт повідомлення",
+        "zh-cn": "作为消息对象的扩展有效载荷可能性"
+      },
       "2.2.2": {
         "en": "Stable release",
         "de": "Stabile Veröffentlichung",
@@ -80,19 +93,6 @@
         "pl": "kolor\nikony\nzdjęcie i symbol_ur",
         "uk": "колір додано\nicon & icon_url додано\nimage& image_url додано",
         "zh-cn": "肤色\nicon & icon_url\n形象和形象:增加"
-      },
-      "2.0.3": {
-        "en": "Typo fix",
-        "de": "Typo fix",
-        "ru": "Typo исправить",
-        "pt": "Correção de tipo",
-        "nl": "Typo",
-        "fr": "Correction du typo",
-        "it": "Correzione del tipo",
-        "es": "Typo fix",
-        "pl": "Typowo",
-        "uk": "Фіксація типо",
-        "zh-cn": "Typo fix"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
