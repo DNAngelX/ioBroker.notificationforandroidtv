@@ -328,8 +328,10 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "uk": "Видалити іконку після відправлення",
 																			  "zh-cn": "发货后删去一章"
 																			},false,'boolean','indicator',initialCreate);
+		        this.writeChannelDataToIoBroker(deviceFolder, 'payload', '','','json','indicator',initialCreate);
 
 		        await this.subscribeStates(deviceFolder+'.message');
+		        await this.subscribeStates(deviceFolder+'.payload');
 
 	        }
 	    } else {
@@ -369,11 +371,31 @@ class Notificationforandroidtv extends utils.Adapter {
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
-		
-		
+
 		if (state) {
 			// The state was changed
-			this.notify(id, state);
+			const triggeredEvent = id.split(".", 4);
+			const event = triggeredEvent.slice(-1);
+
+			if (event == 'payload')
+			{
+				let data = JSON.parse(state.val);
+				var payloadvalue = '';
+				for (const [key, value] of Object.entries(data)) {
+					
+					if (payloadvalue)
+					{
+						payloadvalue = payloadvalue + '&' + `${key}=${value}`;
+					} else {
+						payloadvalue = '?' + `${key}=${value}`;
+						
+					}
+				}
+				this.notifyPayload(id, payloadvalue);
+			} else {
+				this.notify(id, state);
+			}
+			
 
 			adapter.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
@@ -382,14 +404,35 @@ class Notificationforandroidtv extends utils.Adapter {
 		}
 	}
 
-	
+	async notifyPayload(id, payload) {
+
+		console.info('Payload Notify fired!');
+		
+		const myObjectArray = id.split(".", 3);
+		let device = myObjectArray.join('.');
+		let ip = await adapter.getStateAsync(device + '.ip');
+		let url = `http://${ip.val}:7676${payload}`;
+
+		// send the request
+		axios.put(url, payload)		
+	    .then(response => {
+
+	        console.log(`Notify successful! (${response.status})`);
+	    })
+	    .catch(error => {
+	        console.error(`Notify failed for :${ip}`, error.message);
+	    });
+
+	}
+
 	async notify(id, msg) {
 
-		console.error('Notify fired!');
+		console.info('Notify fired!');
 
 		const myObjectArray = id.split(".", 3);
-
+		
 		let device = myObjectArray.join('.');
+		
 
 		let title = await adapter.getStateAsync(device + '.title');
 		let duration = await adapter.getStateAsync(device + '.duration');

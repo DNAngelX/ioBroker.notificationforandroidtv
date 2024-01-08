@@ -1,3 +1,4 @@
+
 ![Logo](admin/notificationforandroidtv.png)
 # ioBroker.notificationforandroidtv - Benachrichtigungsintegration für Android TV/Fire TV
 
@@ -42,10 +43,12 @@ The notification integration for IoBroker supports sending notifications to Andr
 | delete_icon    | Clear icon URL after sending                | true / false              |
 | imageurl       | Image URL                   | http://192.168.20.111/myImage.png |
 | delete_image   | Clear image URL after sending               | true / false              |
+| payload           | json object                   |{"msg":"my Message","bkgcolor": "7","title": "my Title"} ,... duration,position,width,transparency,type,icon,iconurl,imageurl |
 
 
 ### 4. Sending Messages:
-- Once a message is entered in the "message" object, it will be sent to the TV device.
+- Sobald im Objekt "message" eine Nachricht eingetragen wird oder unter "payload", wird diese an das TV-Gerät gesendet. 
+Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **payload** Objekt übergeben werden.
 
 
 # GERMAN
@@ -87,15 +90,22 @@ Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benac
 | delete_icon           | Icon URL nach senden leeren                   | true / false |
 | imageurl           | URL Bild                   | http://192.168.20.111/myImage.png |
 | delete_image           | Bild URL nach senden leeren                   | true / false |
+| payload           | json object                   |{"msg":"my Message","bkgcolor": "7","title": "my Title"} ,... duration,position,width,transparency,type,icon,iconurl,imageurl |
+
 
 
 
 
 ### 4. Senden von Nachrichten:
-- Sobald im Objekt "message" eine Nachricht eingetragen wird, wird diese an das TV-Gerät gesendet.
+- Sobald im Objekt "message" eine Nachricht eingetragen wird oder unter "payload", wird diese an das TV-Gerät gesendet. 
+Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **payload** Objekt übergeben werden.
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+* (DNAngel) extended payload possibility as message object
+
 ### 2.2.2 (2024-01-01)
 * (DNAngel) Stable release
 
