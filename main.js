@@ -379,20 +379,30 @@ class Notificationforandroidtv extends utils.Adapter {
 
 			if (event == 'payload')
 			{
-				let data = JSON.parse(state.val);
-				var payloadvalue = '';
-				for (const [key, value] of Object.entries(data)) {
+				var isJson = this.isJsonString(state.val);
+				if (isJson)
+				{
+					var data = JSON.parse(state.val);
+					var payloadvalue = '';
+					for (const [key, value] of Object.entries(data)) {
 					
-					if (payloadvalue)
-					{
-						payloadvalue = payloadvalue + '&' + `${key}=${value}`;
-					} else {
-						payloadvalue = '?' + `${key}=${value}`;
-						
+						if (payloadvalue)
+						{
+							payloadvalue = payloadvalue + '&' + `${key}=${value}`;
+						} else {
+							payloadvalue = '?' + `${key}=${value}`;
+							
+						}
 					}
+					this.notifyPayload(id, payloadvalue);
+				} else {
+					if (state.val != '')
+					{
+						adapter.log.error(`state ${id} is not a json string`);
+					}
+					
 				}
-				this.notifyPayload(id, payloadvalue);
-			} else {
+			} else if (event == 'message') {
 				this.notify(id, state);
 			}
 			
@@ -402,6 +412,14 @@ class Notificationforandroidtv extends utils.Adapter {
 			// The state was deleted
 			adapter.log.info(`state ${id} deleted`);
 		}
+	}
+	isJsonString(str) {
+	    try {
+	        JSON.parse(str);
+	    } catch (e) {
+	        return false;
+	    }
+	    return true;
 	}
 
 	async notifyPayload(id, payload) {
@@ -414,14 +432,16 @@ class Notificationforandroidtv extends utils.Adapter {
 		let url = `http://${ip.val}:7676${payload}`;
 
 		// send the request
-		axios.put(url, payload)		
+		axios.put(url, '')		
 	    .then(response => {
 
-	        console.log(`Notify successful! (${response.status})`);
+	        console.info(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
 	        console.error(`Notify failed for :${ip}`, error.message);
 	    });
+
+	    return true;
 
 	}
 
@@ -473,6 +493,8 @@ class Notificationforandroidtv extends utils.Adapter {
 	    .catch(error => {
 	        console.error(`Notify failed for :${ip}`, error.message);
 	    });
+
+	    return true;
 	}
 
 
