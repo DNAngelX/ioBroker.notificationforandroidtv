@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "news": {
+      "2.3.1": {
+        "en": "payload bugfix",
+        "de": "fehlerbehebung",
+        "ru": "ошибка загрузки",
+        "pt": "bugfix de carga",
+        "nl": "payload bugfix",
+        "fr": "bugfix charge utile",
+        "it": "payload bugfix",
+        "es": "payload bugfix",
+        "pl": "bugfix ładunku",
+        "uk": "виправлення помилок",
+        "zh-cn": "有效载错误修正"
+      },
       "2.3.0": {
         "en": "extended payload possibility as message object",
         "de": "erweiterte nutzlastmöglichkeit als nachrichtenobjekt",
@@ -80,19 +93,6 @@
         "pl": "nazwa dodana",
         "uk": "додано назву пристрою",
         "zh-cn": "装置名称"
-      },
-      "2.1.0": {
-        "en": "color added\nicon & icon_url added\nimage & image_url added",
-        "de": "farbe hinzugefügt\nicon & icon_url hinzugefügt\nbild und bild hinzugefügt",
-        "ru": "цвет добавлен\nicon & icon_url добавлены\nimage & image_url добавлено",
-        "pt": "cor adicionada\nícone & icon_url adicionado\nimage & image_url adicionado",
-        "nl": "kleur toegevoegd\n_\n_",
-        "fr": "couleur ajoutée\nicon_url added\nimage_ur ajouté",
-        "it": "colore aggiunto\nicona & icon_url aggiunto\nimmagine & image_url aggiunto",
-        "es": "color añadido\nicono_url añadido\nimage_url añadido",
-        "pl": "kolor\nikony\nzdjęcie i symbol_ur",
-        "uk": "колір додано\nicon & icon_url додано\nimage& image_url додано",
-        "zh-cn": "肤色\nicon & icon_url\n形象和形象:增加"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
