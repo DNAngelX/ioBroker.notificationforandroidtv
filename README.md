@@ -102,7 +102,7 @@ Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **pay
 
 ## Changelog
 
-**WORK IN PROGRESS**
+### **WORK IN PROGRESS**
 * (DNAngel) payload bugfix
 
 ### 2.3.0 (2024-01-08)
