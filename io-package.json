@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.3.1",
+    "version": "2.4.0",
     "news": {
+      "2.4.0": {
+        "en": "change requests for official release by @mcm1957 & @Apollon77",
+        "de": "änderungswünsche zur offiziellen Veröffentlichung von @mcm1957 & @Apollon77",
+        "ru": "@mcm1957 & @Apollon77",
+        "pt": "alterar pedidos de liberação oficial por @mcm1957 & @Apollon77",
+        "nl": "verzoeken voor officiële vrijgave wijzigen door @mcm1957 & @Apollon77",
+        "fr": "modifier les demandes de libération officielle par @mcm1957 & @Apollon77",
+        "it": "modifiche richieste di rilascio ufficiale di @mcm1957 & @Apollon77",
+        "es": "solicitudes de cambio para la liberación oficial de @mcm1957 > @Apollon77",
+        "pl": "zmień wnioski o oficjalne wydanie przez @ mcm1957 & @ Apollon77",
+        "uk": "зміна запитів на офіційне видання @mcm1957 & @Apollon77",
+        "zh-cn": "由@mcm1957 & @Apollon77更改正式发布请求"
+      },
       "2.3.1": {
         "en": "payload bugfix",
         "de": "fehlerbehebung",
@@ -80,19 +93,6 @@
         "pl": "małe tłumaczenie",
         "uk": "дрібні питання перекладу",
         "zh-cn": "小型翻译问题"
-      },
-      "2.1.1": {
-        "en": "device name added",
-        "de": "produktname hinzugefügt",
-        "ru": "имя устройства добавлено",
-        "pt": "nome do dispositivo adicionado",
-        "nl": "apparaatnaam toegevoegd",
-        "fr": "nom du dispositif ajouté",
-        "it": "nome del dispositivo aggiunto",
-        "es": "nombre del dispositivo añadido",
-        "pl": "nazwa dodana",
-        "uk": "додано назву пристрою",
-        "zh-cn": "装置名称"
       }
     },
     "title": "Notification for AndroidTv and FireTV",

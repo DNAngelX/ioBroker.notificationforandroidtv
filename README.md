@@ -51,8 +51,7 @@ Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **pay
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 2.4.0 (2024-01-25)
 * (DNAngel) change requests for official release by @mcm1957 & @Apollon77
 
 ### 2.3.1 (2024-01-12)
