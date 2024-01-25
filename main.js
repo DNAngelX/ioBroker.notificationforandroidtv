@@ -7,9 +7,8 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-var adapter = utils.adapter('notificationforandroidtv');
-const axios = require('axios');
-let dev  = [];
+const adapter = utils.adapter("notificationforandroidtv");
+const axios = require("axios");
 
 // Load your modules here, e.g.:
 //const fs = require("fs");
@@ -34,8 +33,8 @@ class Notificationforandroidtv extends utils.Adapter {
 	async writeChannelDataToIoBroker(channelParentPath, id ,channelName, value, channelType, channelRole, createObjectInitally,createObjectInitallyUnit,createObjectInitallyStates,readOnly) {
         
         if(createObjectInitally && createObjectInitallyUnit){
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
-                type: 'state',
+            await this.setObjectNotExistsAsync(channelParentPath + "." + id, {
+                type: "state",
                 common: {
                     name: channelName,
                     type: channelType,
@@ -48,8 +47,8 @@ class Notificationforandroidtv extends utils.Adapter {
                 native: {},
             });
         } else if(createObjectInitally && createObjectInitallyStates){
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
-                type: 'state',
+            await this.setObjectNotExistsAsync(channelParentPath + "." + id, {
+                type: "state",
                 common: {
                     name: channelName,
                     type: channelType,
@@ -62,8 +61,8 @@ class Notificationforandroidtv extends utils.Adapter {
                 native: {},
             });
         } else if(createObjectInitally){
-            await this.setObjectNotExistsAsync(channelParentPath + '.' + id, {
-                type: 'state',
+            await this.setObjectNotExistsAsync(channelParentPath + "." + id, {
+                type: "state",
                 common: {
                     name: channelName,
                     type: channelType,
@@ -77,13 +76,14 @@ class Notificationforandroidtv extends utils.Adapter {
           
             
         }
+        
         let stateVal = await adapter.getStateAsync(`${channelParentPath}.${id}`);
-        stateVal ? stateVal = stateVal.val : '';
+        stateVal ? stateVal = stateVal.val : "";
 
         
         if((value != undefined || value != null) && stateVal === null){
         	
-    		await this.setStateAsync(channelParentPath + '.' + id, value, true);
+    		await this.setStateAsync(channelParentPath + "." + id, value, true);
         	
         }
     }
@@ -100,18 +100,18 @@ class Notificationforandroidtv extends utils.Adapter {
 		if (dev) {
 	        for (const key in dev) {
 
-	        	let androidTv = dev[key];
+	        	const androidTv = dev[key];
 	            
 	            
 	            
 	            //const deviceFolder = 'IP: '+ androidTv;
-	            const deviceFolder = androidTv.ip.replaceAll('.', '_');
+	            const deviceFolder = this.name2id(androidTv.ip.replaceAll(".", "_"));
 	            const deviceName = androidTv.name;
 
 				
 
 				//let initialCreate =  await adapter.getStatesAsync(deviceFolder) != undefined ? false : true;
-				let initialCreate =  true;
+				const initialCreate =  true;
 
 				const positions = {
 	                0:"BOTTOM_RIGHT",
@@ -162,15 +162,14 @@ class Notificationforandroidtv extends utils.Adapter {
 	            };
 
 	            await this.setObjectNotExistsAsync(deviceFolder, {
-	                type: 'channel',
+	                type: "channel",
 	                common: {
 	                    name: deviceName,
-	                    
 	                },
 	                native: {},
 	            });
 
-	            await this.writeChannelDataToIoBroker(deviceFolder, 'message', {
+	            await this.writeChannelDataToIoBroker(deviceFolder, "message", {
 																			  "en": "Message",
 																			  "de": "Nachricht",
 																			  "ru": "Сообщение",
@@ -182,8 +181,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Message",
 																			  "uk": "Новини",
 																			  "zh-cn": "导 言"
-																			}, '','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'title', {
+																			}, "","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "title", {
 																			  "en": "Message Title",
 																			  "de": "Nachricht Titel",
 																			  "ru": "Название сообщения",
@@ -195,8 +194,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Tytuł",
 																			  "uk": "Назва повідомлення",
 																			  "zh-cn": "标题"
-																			},'ioBroker Message','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'duration',{
+																			},"ioBroker Message","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "duration",{
 																			  "en": "Display duration",
 																			  "de": "Anzeigedauer",
 																			  "ru": "Продолжительность дисплея",
@@ -208,8 +207,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Czas trwania gry",
 																			  "uk": "Тривалість відображення",
 																			  "zh-cn": "A. 期限"
-																			},15, 'number', 'indicator',initialCreate,'s');
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'color', {
+																			},15, "number", "state",initialCreate,'s');
+		        await this.writeChannelDataToIoBroker(deviceFolder, "color", {
 																			  "en": "Color",
 																			  "de": "Farbe",
 																			  "ru": "Цвет",
@@ -221,8 +220,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Color",
 																			  "uk": "Колір",
 																			  "zh-cn": "科 法 律"
-																			},'8','string','indicator',initialCreate,null,bkgcolor);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'ip', {
+																			},"8","string","state",initialCreate,null,bkgcolor);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "ip", {
 																			  "en": "IP Address",
 																			  "de": "IP-Adresse",
 																			  "ru": "IP адрес",
@@ -234,8 +233,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "IP Address",
 																			  "uk": "IP-адреса",
 																			  "zh-cn": "IP地址"
-																			},androidTv.ip,'string','indicator',initialCreate,null,null,true);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'icon', {
+																			},androidTv.ip,"string","state",initialCreate,null,null,true);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "icon", {
 																			  "en": "Icon if iconurl empty",
 																			  "de": "Icon, wenn iconurl leer ist",
 																			  "ru": "Икона, если iconurl пуст",
@@ -247,8 +246,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Icon jeśli ikonur pusty",
 																			  "uk": "Ікона під час іконопису",
 																			  "zh-cn": "Iconurl空"
-																			},0,'number','indicator',initialCreate,null,icon);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'transparency', {
+																			},0,"number","state",initialCreate,null,icon);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "transparency", {
 																			  "en": "Transparency",
 																			  "de": "Transparenz",
 																			  "ru": "Прозрачность",
@@ -260,8 +259,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Przejrzystość",
 																			  "uk": "Прозорість",
 																			  "zh-cn": "透明度"
-																			},0,'number','indicator',initialCreate,null,transparencies);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'position',{
+																			},0,"number","state",initialCreate,null,transparencies);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "position",{
 																			  "en": "Overlay Position",
 																			  "de": "Overlay Position",
 																			  "ru": "Overlay позиция",
@@ -273,9 +272,9 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Overlay",
 																			  "uk": "Позиція",
 																			  "zh-cn": "增加职位"
-																			},0, 'number', 'indicator',initialCreate,null,positions);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'type', 'Overlay Type',0,'number', 'indicator',initialCreate,null,types);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'width', {
+																			},0, "number", "state",initialCreate,null,positions);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "type", "Overlay Type",0,"number", "state",initialCreate,null,types);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "width", {
 																			  "en": "Overlay Size",
 																			  "de": "Overlay Größe",
 																			  "ru": "Overlay Размер",
@@ -287,8 +286,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Overlay",
 																			  "uk": "Розмір реле",
 																			  "zh-cn": "A. 超支"
-																			},0,'number', 'indicator',initialCreate,null,width);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'imageurl', {
+																			},0,"number", "state",initialCreate,null,width);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "imageurl", {
 																			  "en": "image URL",
 																			  "de": "bild URL",
 																			  "ru": "изображение URL",
@@ -300,9 +299,9 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "obraz URL",
 																			  "uk": "зображення URL",
 																			  "zh-cn": "图像"
-																			},'','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'iconurl','icon URL','','string','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_image',{
+																			},"","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "iconurl","icon URL","","string","text.url",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "delete_image",{
 																			  "en": "Delete image after sending",
 																			  "de": "Bild nach Senden löschen",
 																			  "ru": "Удалить изображение после отправки",
@@ -314,8 +313,8 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Zdjęcie Delete po wysłaniu",
 																			  "uk": "Видалити зображення після відправлення",
 																			  "zh-cn": "在发送后删去图像"
-																			},false,'boolean','indicator',initialCreate);
-		        await this.writeChannelDataToIoBroker(deviceFolder, 'delete_icon',{
+																			},false,"boolean","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder, "delete_icon",{
 																			  "en": "Delete icon after sending",
 																			  "de": "Icon nach Senden löschen",
 																			  "ru": "Удалить иконку после отправки",
@@ -327,15 +326,15 @@ class Notificationforandroidtv extends utils.Adapter {
 																			  "pl": "Ikona Delete po wysłaniu",
 																			  "uk": "Видалити іконку після відправлення",
 																			  "zh-cn": "发货后删去一章"
-																			},false,'boolean','indicator',initialCreate);
-		        this.writeChannelDataToIoBroker(deviceFolder, 'payload', '','','json','indicator',initialCreate);
+																			},false,"boolean","state",initialCreate);
+		        this.writeChannelDataToIoBroker(deviceFolder, "payload", "","","json","json",initialCreate);
 
-		        await this.subscribeStates(deviceFolder+'.message');
-		        await this.subscribeStates(deviceFolder+'.payload');
+		        await this.subscribeStates(deviceFolder+".message");
+		        await this.subscribeStates(deviceFolder+".payload");
 
 	        }
 	    } else {
-	        adapter.log.error('No AndroidTV`s configurated, please add a device');
+	        adapter.log.error("No AndroidTV`s configurated, please add a device");
 	    }
 	
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -372,25 +371,25 @@ class Notificationforandroidtv extends utils.Adapter {
 	 */
 	onStateChange(id, state) {
 
-		if (state) {
+		if (state && state.ack == false) {
 			// The state was changed
 			const triggeredEvent = id.split(".", 4);
 			const event = triggeredEvent.slice(-1);
 
-			if (event == 'payload')
+			if (event == "payload")
 			{
-				var isJson = this.isJsonString(state.val);
+				const isJson = this.isJsonString(state.val);
 				if (isJson)
 				{
-					var data = JSON.parse(state.val);
-					var payloadvalue = '';
+					const data = JSON.parse(state.val);
+					let payloadvalue = "";
 					for (const [key, value] of Object.entries(data)) {
 					
 						if (payloadvalue)
 						{
-							payloadvalue = payloadvalue + '&' + `${key}=${value}`;
+							payloadvalue = payloadvalue + "&" + `${key}=${value}`;
 						} else {
-							payloadvalue = '?' + `${key}=${value}`;
+							payloadvalue = "?" + `${key}=${value}`;
 							
 						}
 					}
@@ -402,16 +401,20 @@ class Notificationforandroidtv extends utils.Adapter {
 					}
 					
 				}
-			} else if (event == 'message') {
+			} else if (event == "message") {
 				this.notify(id, state);
 			}
 			
 
-			adapter.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			adapter.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
-			adapter.log.info(`state ${id} deleted`);
+			adapter.log.debug(`state ${id} deleted`);
 		}
+	}
+
+	name2id(pName) {
+	    return (pName || "").replace(adapter.FORBIDDEN_CHARS, "_");
 	}
 	isJsonString(str) {
 	    try {
@@ -424,21 +427,23 @@ class Notificationforandroidtv extends utils.Adapter {
 
 	async notifyPayload(id, payload) {
 
-		console.info('Payload Notify fired!');
+		console.debug('Payload Notify fired!');
 		
 		const myObjectArray = id.split(".", 3);
-		let device = myObjectArray.join('.');
-		let ip = await adapter.getStateAsync(device + '.ip');
-		let url = `http://${ip.val}:7676${payload}`;
+		const device = myObjectArray.join(".");
+		const ip = await adapter.getStateAsync(device + ".ip");
+		const url = `http://${ip.val}:7676${payload}`;
 
 		// send the request
-		axios.put(url, '')		
+		axios.put(url, {
+			timeout: 2000
+		})		
 	    .then(response => {
 
-	        console.info(`Notify successful! (${response.status})`);
+	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        console.error(`Notify failed for :${ip}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip}`, error.message);
 	    });
 
 	    return true;
@@ -447,51 +452,54 @@ class Notificationforandroidtv extends utils.Adapter {
 
 	async notify(id, msg) {
 
-		console.info('Notify fired!');
+		adapter.log.debug("Notify fired!");
 
 		const myObjectArray = id.split(".", 3);
 		
-		let device = myObjectArray.join('.');
+		const device = myObjectArray.join(".");
 		
 
-		let title = await adapter.getStateAsync(device + '.title');
-		let duration = await adapter.getStateAsync(device + '.duration');
-		let position = await adapter.getStateAsync(device + '.position');
-		let width = await adapter.getStateAsync(device + '.width');
-		let transparency = await adapter.getStateAsync(device + '.transparency');
-		let type = await adapter.getStateAsync(device + '.type');
-		let color = await adapter.getStateAsync(device + '.color');
-		let ip = await adapter.getStateAsync(device + '.ip');
-		let icon = await adapter.getStateAsync(device + '.icon');
-		let iconurl = await adapter.getStateAsync(device + '.iconurl');
-		let imageurl = await adapter.getStateAsync(device + '.imageurl');
-		let delete_image = await adapter.getStateAsync(device + '.delete_image');
-		let delete_icon = await adapter.getStateAsync(device + '.delete_icon');
+		const title = await adapter.getStateAsync(device + ".title");
+		const duration = await adapter.getStateAsync(device + ".duration");
+		const position = await adapter.getStateAsync(device + ".position");
+		const width = await adapter.getStateAsync(device + ".width");
+		const transparency = await adapter.getStateAsync(device + ".transparency");
+		const type = await adapter.getStateAsync(device + ".type");
+		const color = await adapter.getStateAsync(device + ".color");
+		const ip = await adapter.getStateAsync(device + ".ip");
+		const icon = await adapter.getStateAsync(device + ".icon");
+		const iconurl = await adapter.getStateAsync(device + ".iconurl");
+		const imageurl = await adapter.getStateAsync(device + ".imageurl");
+		const delete_image = await adapter.getStateAsync(device + ".delete_image");
+		const delete_icon = await adapter.getStateAsync(device + ".delete_icon");
 		
 		
 		
 		axios.post(`http://${ip.val}:7676
-			?msg=`+msg.val.replace(/\n/gi,'<br>')+
-			'&title='+title.val+
-			'&duration='+duration.val+
-			'&position='+position.val+
-			'&width='+width.val+
-			'&transparency='+transparency.val+
-			'&type='+type.val+
-			'&bkgcolor='+color.val+
-			'&icon='+icon.val+
-			'&iconurl='+iconurl.val+
-			'&imageurl='+imageurl.val
-			,msg
+			?msg=`+msg.val.replace(/\n/gi,"<br>")+
+			"&title="+title.val+
+			"&duration="+duration.val+
+			"&position="+position.val+
+			"&width="+width.val+
+			"&transparency="+transparency.val+
+			"&type="+type.val+
+			"&bkgcolor="+color.val+
+			"&icon="+icon.val+
+			"&iconurl="+iconurl.val+
+			"&imageurl="+imageurl.val
+			,
+			{
+				timeout: 2000
+			}
 	    )
 	    .then(response => {
-	    	delete_image.val == true ? this.setStateAsync(device + '.imageurl', '', true) : '';
-	    	delete_icon.val == true ? this.setStateAsync(device + '.iconurl', '', true) : '';
+	    	delete_image.val == true ? this.setStateAsync(device + ".imageurl", "", true) : "";
+	    	delete_icon.val == true ? this.setStateAsync(device + ".iconurl", "", true) : "";
 	    	
-	        console.log(`Notify successful! (${response.status})`);
+	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        console.error(`Notify failed for :${ip}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip}`, error.message);
 	    });
 
 	    return true;

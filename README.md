@@ -50,57 +50,11 @@ The notification integration for IoBroker supports sending notifications to Andr
 Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **payload** Objekt übergeben werden.
 
 
-# GERMAN
-
-Notification integration für IoBroker umfasst Unterstützung für Benachrichtigungen für [Android TV](https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google) und Benachrichtigungen für [Fire TV](https://www.amazon.de/Christian-Fees-Benachrichtigungen-für-Fire/dp/B00OESCXEK). Mit dieser Integration kannst du Benachrichtigungen an dein Android TV-Gerät senden. Es ermöglicht ein Overlay, das den Nachrichteninhalt für eine anpassbare Dauer anzeigt, bevor er verschwindet. Zusätzlich unterstützt es das Senden von Bildern, wie z. B. von Sicherheitskameras, und benutzerdefinierten Symbolen. Symbole funktionieren ähnlich wie Bilder, sie erscheinen kleiner und links von der Benachrichtigung, während Bilder größer angezeigt werden und über der Benachrichtigung erscheinen.
-
-Diese Benachrichtigungen funktionieren im globalen Bereich deines Android TV-Geräts und erscheinen unabhängig von der aktiven Anwendung.
-
-Bei der Einrichtung ist zu beachten, dass es zwei verschiedene Apps gibt: eine für dein Smartphone (die für diese Plattform nicht erforderlich ist) und eine andere für dein Android TV-Gerät, um Benachrichtigungen zu erhalten. Die App, die für die Anzeige von Benachrichtigungen gesendet von IoBroker erforderlich ist, ist im Store deines Android TV-Geräts verfügbar. Alle In-App-Käufe sind ausschließlich für den Client für Android-Smartphones und schränken das Versenden von Benachrichtigungen von IoBroker nicht ein.
-
-## Beschreibung
-Die Benachrichtigungsintegration für IoBroker unterstützt das Senden von Benachrichtigungen an Android TV- und Fire TV-Geräte. Diese Integration ermöglicht die Anzeige anpassbarer Nachrichtenüberlagerungen für eine spezifizierte Dauer auf dem Bildschirm des TV-Geräts. Darüber hinaus kann sie Bilder, wie z. B. von Sicherheitskameras, und benutzerdefinierte Icons anzeigen.
-
-## Schritte zur Einrichtung:
-
-### 1. Adaptereinstellungen:
-- Gehe zu den Adaptereinstellungen in der IoBroker-Oberfläche.
-- Füge die IP-Adressen der Zielgeräte hinzu und gib ihnen Namen für die Identifizierung.
-
-### 2. Lade die App auf deinem Android TV / Fire TV:
-- Lade die App "Notifications for Android TV" für Android TV-Geräte von [Google Play](https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google) herunter.
-- Lade die App "Notifications for Fire TV" für Fire TV-Geräte von [Amazon](https://www.amazon.com/Christian-Fees-Notifications-for-Fire/dp/B00OESCXEK) herunter.
-
-### 3. Erstellung von Objekten mit den folgenden Einstellungen:
-
-| Einstellung    | Beschreibung                                | Beispielwert              |
-| -------------- | ------------------------------------------- | ------------------------- |
-| duration       | Anzeigedauer in Sekunden                    | 10 s                       |
-| ip             | IP-Adresse des TV-Geräts                    | 192.168.0.100             |
-| message        | Nachricht, die gesendet werden soll         | "Testnachricht"           |
-| position       | Position auf dem TV-Bildschirm              | 0 = "BOTTOM_RIGHT"            |
-| title          | Titel der Nachricht                         | "Wichtige Benachrichtigung"|
-| transparency   | Transparenz des Overlays                    | 25                       |
-| type           | Anzeigetyp des Overlays                     | Standard, ONLY_TITLE, ONLY_ICON         |
-| color           | Farbe                   | blue, green,...|
-| width           | Overlay Größe                   | small,xxl,... |
-| icon           | Icon Auswahl                   | ! ? :-) |
-| iconurl           | URL Icon                   | http://192.168.20.111/myIcon.png |
-| delete_icon           | Icon URL nach senden leeren                   | true / false |
-| imageurl           | URL Bild                   | http://192.168.20.111/myImage.png |
-| delete_image           | Bild URL nach senden leeren                   | true / false |
-| payload           | json object                   |{"msg":"my Message","bkgcolor": "7","title": "my Title"} ,... duration,position,width,transparency,type,icon,iconurl,imageurl |
-
-
-
-
-
-### 4. Senden von Nachrichten:
-- Sobald im Objekt "message" eine Nachricht eingetragen wird oder unter "payload", wird diese an das TV-Gerät gesendet. 
-Payload nutzt nur die IP-Adresse aus den Objekten, der rest muss über day **payload** Objekt übergeben werden.
-
-
 ## Changelog
+
+### **WORK IN PROGRESS**
+* (DNAngel) change requests for official release by @mcm1957 & @Apollon77
+
 ### 2.3.1 (2024-01-12)
 * (DNAngel) payload bugfix
 
