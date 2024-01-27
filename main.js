@@ -578,7 +578,19 @@ class Notificationforandroidtv extends utils.Adapter {
 				const isJson = this.isJsonString(state.val);
 				if (isJson)
 				{
-					this.notifyPayload(id, state.val);
+					const data = JSON.parse(state.val);
+					let payloadvalue = "";
+					for (const [key, value] of Object.entries(data)) {
+					
+						if (payloadvalue)
+						{
+							payloadvalue = payloadvalue + "&" + `${key}=${value}`;
+						} else {
+							payloadvalue = "?" + `${key}=${value}`;
+							
+						}
+					}
+					this.notifyPayload(id, payloadvalue);
 				} else {
 					if (state.val != '')
 					{
@@ -634,27 +646,23 @@ class Notificationforandroidtv extends utils.Adapter {
 
 	async notifyPayload(id, payload) {
 
-		console.debug("Payload Notify fired!");
+		console.debug('Payload Notify fired!');
 		
 		const myObjectArray = id.split(".", 3);
 		const device = myObjectArray.join(".");
-		const ip = await adapter.getStateAsync(device + ".ip");		
+		const ip = await adapter.getStateAsync(device + ".ip");
+		const url = `http://${ip.val}:7676${payload}`;
 
 		// send the request
-		axios({
-	        method: "post",
-	        baseURL: `http://${ip.val}:7676`,
-	        headers: {"Content-Type":"multipart/form-data"},    
-	       	data : payload,
-	       	timeout: 4500,
-         	responseType: "json"
-	     })
+		axios.put(url, {
+			timeout: 2000
+		})		
 	    .then(response => {
 
 	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        adapter.log.error(`Notify failed for :${ip.val}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip}`, error.message);
 	    });
 
 	    return true;
@@ -684,28 +692,23 @@ class Notificationforandroidtv extends utils.Adapter {
 		const delete_image = await adapter.getStateAsync(device + ".delete_image");
 		const delete_icon = await adapter.getStateAsync(device + ".delete_icon");
 		
-		const data = {
-			"msg":msg.val.replace(/\n/gi,"<br>"),
-			"title":title.val,
-			"duration":duration.val,
-			"position":position.val,
-			"width":width.val,
-			"transparency":transparency.val,
-			"type":type.val,
-			"bkgcolor":color.val,
-			"icon":icon.val,
-			"iconurl":iconurl.val,
-			"imageurl":imageurl
-		};
-		
-	    axios({
-	        method: "post",
-	        baseURL: `http://${ip.val}:7676`,
-	        headers: {"Content-Type":"multipart/form-data"},    
-	       	data : data,
-	       	timeout: 4500,
-         	responseType: "json"
-	     })
+		axios.post(`http://${ip.val}:7676
+			?msg=`+msg.val.replace(/\n/gi,"<br>")+
+			"&title="+title.val+
+			"&duration="+duration.val+
+			"&position="+position.val+
+			"&width="+width.val+
+			"&transparency="+transparency.val+
+			"&type="+type.val+
+			"&bkgcolor="+color.val+
+			"&icon="+icon.val+
+			"&iconurl="+iconurl.val+
+			"&imageurl="+imageurl.val
+			,
+			{
+				timeout: 2000
+			}
+	    )
 	    .then(response => {
 	    	delete_image.val == true ? this.setStateAsync(device + ".imageurl", "", true) : "";
 	    	delete_icon.val == true ? this.setStateAsync(device + ".iconurl", "", true) : "";
@@ -713,7 +716,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        adapter.log.error(`Notify failed for :${ip,val}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip.val}`, error.message);
 	    });
 
 	    return true;
