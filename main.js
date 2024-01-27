@@ -76,7 +76,7 @@ class Notificationforandroidtv extends utils.Adapter {
           
             
         }
-        
+
         let stateVal = await adapter.getStateAsync(`${channelParentPath}.${id}`);
         stateVal ? stateVal = stateVal.val : "";
 
@@ -120,6 +120,13 @@ class Notificationforandroidtv extends utils.Adapter {
 	                3:"TOP_LEFT",
 	                4:"CENTER"
 	            };
+	            const positionsPiPup = {
+	                0:"TopRight",
+	                1:"TopLeft",
+	                2:"BottomRight",
+	                3:"BottomLeft",
+	                4:"Center"
+	            };
 	            const transparencies = {
 	                0:"Standard",
 	                1:"0 %",
@@ -132,6 +139,11 @@ class Notificationforandroidtv extends utils.Adapter {
 	                0:"Standard",
 	                1:"ONLY_TITLE",
 	                2:"ONLY_ICON"
+	            };
+	            const typesUrl = {
+	                0:"video",
+	                1:"image",
+	                2:"web"
 	            };
 	            const bkgcolor = {
 	                0:"neutral blue",
@@ -329,8 +341,193 @@ class Notificationforandroidtv extends utils.Adapter {
 																			},false,"boolean","state",initialCreate);
 		        this.writeChannelDataToIoBroker(deviceFolder, "payload", "","","json","json",initialCreate);
 
+				// Update support for PiPup
+		        const subfolderPiPup = ".PiPup";
+				await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "message", {
+																			  "en": "Message",
+																			  "de": "Nachricht",
+																			  "ru": "Сообщение",
+																			  "pt": "Mensagem",
+																			  "nl": "Bericht",
+																			  "fr": "Message",
+																			  "it": "Messaggio",
+																			  "es": "Mensaje",
+																			  "pl": "Message",
+																			  "uk": "Новини",
+																			  "zh-cn": "导 言"
+																			}, "","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "title", {
+																			  "en": "Message Title",
+																			  "de": "Nachricht Titel",
+																			  "ru": "Название сообщения",
+																			  "pt": "Título da Mensagem",
+																			  "nl": "Bericht Tit",
+																			  "fr": "Titre du message",
+																			  "it": "Titolo del messaggio",
+																			  "es": "Título del mensaje",
+																			  "pl": "Tytuł",
+																			  "uk": "Назва повідомлення",
+																			  "zh-cn": "标题"
+																			},"ioBroker Message","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "duration",{
+																			  "en": "Display duration",
+																			  "de": "Anzeigedauer",
+																			  "ru": "Продолжительность дисплея",
+																			  "pt": "Duração da exposição",
+																			  "nl": "Vertaling:",
+																			  "fr": "Durée d ' affichage",
+																			  "it": "Durata dell'esposizione",
+																			  "es": "Duración de la pantalla",
+																			  "pl": "Czas trwania gry",
+																			  "uk": "Тривалість відображення",
+																			  "zh-cn": "A. 期限"
+																			},15, "number", "state",initialCreate,'s');
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "messageColor", {
+																			  "en": "message Color",
+																			  "de": "nachricht Farbe",
+																			  "ru": "сообщение",
+																			  "pt": "mensagem Cor",
+																			  "nl": "berichtkleur",
+																			  "fr": "couleur du message",
+																			  "it": "messaggio",
+																			  "es": "mensaje Color",
+																			  "pl": "wiadomość Kolor",
+																			  "uk": "повідомлення Колір",
+																			  "zh-cn": "信件颜色"
+																			},"8","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "titleColor", {
+																			  "en": "title Color",
+																			  "de": "titel Farbe",
+																			  "ru": "название",
+																			  "pt": "título Cor",
+																			  "nl": "titel kleur",
+																			  "fr": "titre Couleur",
+																			  "it": "titolo",
+																			  "es": "título Color",
+																			  "pl": "tytuł Kolor",
+																			  "uk": "колір",
+																			  "zh-cn": "标题颜色"
+																			},"#FFFFFF","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "backgroundColor", {
+																			  "en": "background Color",
+																			  "de": "hintergrundfarbe",
+																			  "ru": "цвет",
+																			  "pt": "cor de fundo",
+																			  "nl": "achtergrondkleur",
+																			  "fr": "couleur de fond",
+																			  "it": "sfondo colore",
+																			  "es": "fondo Color",
+																			  "pl": "tło Kolor",
+																			  "uk": "фон Колір",
+																			  "zh-cn": "背景颜色"
+																			},"#CC000000","string","state",initialCreate);
+		        
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "position",{
+																			  "en": "Overlay Position",
+																			  "de": "Overlay Position",
+																			  "ru": "Overlay позиция",
+																			  "pt": "Posição de sobreposição",
+																			  "nl": "Overlay Position",
+																			  "fr": "Position surmontée",
+																			  "it": "Posizione di sovrapposizione",
+																			  "es": "Posición de superposición",
+																			  "pl": "Overlay",
+																			  "uk": "Позиція",
+																			  "zh-cn": "增加职位"
+																			},0, "number", "state",initialCreate,null,positionsPiPup);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "titleSize",{
+																			  "en": "title Size",
+																			  "de": "titel Größe",
+																			  "ru": "название",
+																			  "pt": "tamanho do título",
+																			  "nl": "titel Grootte",
+																			  "fr": "titre Taille",
+																			  "it": "titolo Dimensione",
+																			  "es": "título Tamaño",
+																			  "pl": "tytuł Rozmiar",
+																			  "uk": "розмір титулу",
+																			  "zh-cn": "标题大小"
+																			},16, "number", "state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "messageSize",{
+																			  "en": "message Size",
+																			  "de": "nachricht Größe",
+																			  "ru": "размер сообщения",
+																			  "pt": "tamanho da mensagem",
+																			  "nl": "berichtgrootte",
+																			  "fr": "taille du message",
+																			  "it": "dimensione del messaggio",
+																			  "es": "mensaje Tamaño",
+																			  "pl": "rozmiar wiadomości",
+																			  "uk": "розмір повідомлення",
+																			  "zh-cn": "信件大小"
+																			},12, "number", "state",initialCreate);
+		        
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "width", {
+																			  "en": "width",
+																			  "de": "breite",
+																			  "ru": "ширина",
+																			  "pt": "largura de largura",
+																			  "nl": "breedte",
+																			  "fr": "largeur",
+																			  "it": "larghezza",
+																			  "es": "ancho",
+																			  "pl": "szerokość",
+																			  "uk": "ширина",
+																			  "zh-cn": "宽度"
+																			},640,"number", "state",initialCreate,'px');
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "height", {
+																			  "en": "height",
+																			  "de": "höhe",
+																			  "ru": "высота",
+																			  "pt": "altura",
+																			  "nl": "hoogte",
+																			  "fr": "hauteur",
+																			  "it": "altezza",
+																			  "es": "altura",
+																			  "pl": "wysokość",
+																			  "uk": "висота",
+																			  "zh-cn": "高度"
+																			},480,"number", "state",initialCreate,'px');
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "url", {
+																			  "en": "image URL",
+																			  "de": "bild URL",
+																			  "ru": "изображение URL",
+																			  "pt": "imagem URL",
+																			  "nl": "beeld URL",
+																			  "fr": "image URL",
+																			  "it": "immagine URL",
+																			  "es": "imagen URL",
+																			  "pl": "obraz URL",
+																			  "uk": "зображення URL",
+																			  "zh-cn": "图像"
+																			},"","string","state",initialCreate);
+		        await this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "type", {
+																			  "en": "URL Type",
+																			  "de": "URL Typ",
+																			  "ru": "URL Тип",
+																			  "pt": "URL Tipo",
+																			  "nl": "URL Type",
+																			  "fr": "URL Type",
+																			  "it": "URL pagina Tipo",
+																			  "es": "URL Tipo",
+																			  "pl": "URL Rodzaj",
+																			  "uk": "Контакти Тип",
+																			  "zh-cn": "網址 类型"
+																			},0,"number", "state",initialCreate,null,typesUrl);
+		        
+		        this.writeChannelDataToIoBroker(deviceFolder + subfolderPiPup, "payload", "","","json","json",initialCreate);
+				// Update support for PiPup
+		        
+		         
+		        await this.subscribeStates(deviceFolder+subfolderPiPup+".message");
+		        await this.subscribeStates(deviceFolder+subfolderPiPup+".payload");
+
 		        await this.subscribeStates(deviceFolder+".message");
 		        await this.subscribeStates(deviceFolder+".payload");
+
+		        
+
+		        
 
 	        }
 	    } else {
@@ -381,19 +578,7 @@ class Notificationforandroidtv extends utils.Adapter {
 				const isJson = this.isJsonString(state.val);
 				if (isJson)
 				{
-					const data = JSON.parse(state.val);
-					let payloadvalue = "";
-					for (const [key, value] of Object.entries(data)) {
-					
-						if (payloadvalue)
-						{
-							payloadvalue = payloadvalue + "&" + `${key}=${value}`;
-						} else {
-							payloadvalue = "?" + `${key}=${value}`;
-							
-						}
-					}
-					this.notifyPayload(id, payloadvalue);
+					this.notifyPayload(id, state.val);
 				} else {
 					if (state.val != '')
 					{
@@ -403,6 +588,28 @@ class Notificationforandroidtv extends utils.Adapter {
 				}
 			} else if (event == "message") {
 				this.notify(id, state);
+			} else if (event == "PiPup") {
+				const triggeredEvent = id.split(".", 5);
+				const event2 = triggeredEvent.slice(-1);
+				
+				if (event2 == "message") {
+					this.PiPup(id, state);
+				} else if (event2 == "payload") {
+
+					const isJson = this.isJsonString(state.val);
+					if (isJson)
+					{
+						this.PiPupPayload(id, state.val);
+					} else {
+						if (state.val != '')
+						{
+							adapter.log.error(`state ${id} is not a json string`);
+						}
+						
+					}
+					
+				}
+				
 			}
 			
 
@@ -427,23 +634,27 @@ class Notificationforandroidtv extends utils.Adapter {
 
 	async notifyPayload(id, payload) {
 
-		console.debug('Payload Notify fired!');
+		console.debug("Payload Notify fired!");
 		
 		const myObjectArray = id.split(".", 3);
 		const device = myObjectArray.join(".");
-		const ip = await adapter.getStateAsync(device + ".ip");
-		const url = `http://${ip.val}:7676${payload}`;
+		const ip = await adapter.getStateAsync(device + ".ip");		
 
 		// send the request
-		axios.put(url, {
-			timeout: 2000
-		})		
+		axios({
+	        method: "post",
+	        baseURL: `http://${ip.val}:7676`,
+	        headers: {"Content-Type":"multipart/form-data"},    
+	       	data : payload,
+	       	timeout: 4500,
+         	responseType: "json"
+	     })
 	    .then(response => {
 
 	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        adapter.log.error(`Notify failed for :${ip}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip.val}`, error.message);
 	    });
 
 	    return true;
@@ -473,25 +684,28 @@ class Notificationforandroidtv extends utils.Adapter {
 		const delete_image = await adapter.getStateAsync(device + ".delete_image");
 		const delete_icon = await adapter.getStateAsync(device + ".delete_icon");
 		
+		const data = {
+			"msg":msg.val.replace(/\n/gi,"<br>"),
+			"title":title.val,
+			"duration":duration.val,
+			"position":position.val,
+			"width":width.val,
+			"transparency":transparency.val,
+			"type":type.val,
+			"bkgcolor":color.val,
+			"icon":icon.val,
+			"iconurl":iconurl.val,
+			"imageurl":imageurl
+		};
 		
-		
-		axios.post(`http://${ip.val}:7676
-			?msg=`+msg.val.replace(/\n/gi,"<br>")+
-			"&title="+title.val+
-			"&duration="+duration.val+
-			"&position="+position.val+
-			"&width="+width.val+
-			"&transparency="+transparency.val+
-			"&type="+type.val+
-			"&bkgcolor="+color.val+
-			"&icon="+icon.val+
-			"&iconurl="+iconurl.val+
-			"&imageurl="+imageurl.val
-			,
-			{
-				timeout: 2000
-			}
-	    )
+	    axios({
+	        method: "post",
+	        baseURL: `http://${ip.val}:7676`,
+	        headers: {"Content-Type":"multipart/form-data"},    
+	       	data : data,
+	       	timeout: 4500,
+         	responseType: "json"
+	     })
 	    .then(response => {
 	    	delete_image.val == true ? this.setStateAsync(device + ".imageurl", "", true) : "";
 	    	delete_icon.val == true ? this.setStateAsync(device + ".iconurl", "", true) : "";
@@ -499,11 +713,91 @@ class Notificationforandroidtv extends utils.Adapter {
 	        adapter.log.debug(`Notify successful! (${response.status})`);
 	    })
 	    .catch(error => {
-	        adapter.log.error(`Notify failed for :${ip}`, error.message);
+	        adapter.log.error(`Notify failed for :${ip,val}`, error.message);
 	    });
 
 	    return true;
 	}
+	async PiPupPayload(id, payload) {
+
+		adapter.log.debug("PiPup payload fired!");
+		const myObjectArray = id.split(".", 3);
+		const device = myObjectArray.join(".");
+		const ip = await adapter.getStateAsync(device + ".ip");
+		
+		axios({
+	        method: "post",
+	        baseURL: `http://${ip.val}:7979/notify`,
+	        headers: {"Content-Type":"application/json"},    
+	       	data : payload,
+	       	timeout: 4500,
+         	responseType: "json"
+	     })
+	    .then(response => {
+	        adapter.log.debug(`PiPup payload successful! (${response.status})`);
+	    })
+	    .catch(error => {
+	        adapter.log.error(`PiPup payload failed for :${ip.val}`, error.message);
+	    });
+
+	    return true;
+
+	}
+	async PiPup(id, msg) {
+
+		adapter.log.debug("PiPup fired!");
+
+		const myObjectArray = id.split(".", 3);
+		const device = myObjectArray.join(".");
+
+		const title = await adapter.getStateAsync(device + ".PiPup.title");
+		const duration = await adapter.getStateAsync(device + ".PiPup.duration");
+		const position = await adapter.getStateAsync(device + ".PiPup.position");
+		const width = await adapter.getStateAsync(device + ".PiPup.width");
+		const height = await adapter.getStateAsync(device + ".PiPup.height");
+		const type = await adapter.getStateAsync(device + ".PiPup.type");
+		const titleColor = await adapter.getStateAsync(device + ".PiPup.titleColor");
+		const titleSize = await adapter.getStateAsync(device + ".PiPup.titleSize");
+		const messageColor = await adapter.getStateAsync(device + ".PiPup.messageColor");
+		const messageSize = await adapter.getStateAsync(device + ".PiPup.messageSize");
+		const backgroundColor = await adapter.getStateAsync(device + ".PiPup.backgroundColor");
+		const ip = await adapter.getStateAsync(device + ".ip");
+		const url = await adapter.getStateAsync(device + ".PiPup.url");
+		const typeClear = type.val == 0 ? "video" : type.val == 1 ? "image" : type.val == 2 ? "web" : '';
+		const media = { [typeClear] : { "url": url.val, "width": width.val, "height": typeClear == "image" ? height.val : '' }};
+		
+		const data = {
+			"message":msg.val.replace(/\n/gi,"<br>"),
+			"title":title.val,
+			"duration":duration.val,
+			"position":position.val,
+			"type":type.val,
+			"titleColor":titleColor.val,
+			"titleSize":titleSize.val,
+			"messageColor":messageColor.val,
+			"messageSize":messageSize.val,
+			"backgroundColor":backgroundColor.val,
+			"media":media
+		};
+
+	    axios({
+	        method: "post",
+	        baseURL: `http://${ip.val}:7979/notify`,
+	        headers: {"Content-Type":"multipart/form-data"},    
+	       	data : data,
+	       	timeout: 4500,
+         	responseType: "json"
+	     })
+	    .then(response => {
+	        adapter.log.debug(`PiPup successful! (${response.status})`);
+	    })
+	    .catch(error => {
+	        adapter.log.error(`PiPup failed for :${ip.val}`, error.message);
+	    });
+
+	    return true;
+	}
+
 
 
 }
