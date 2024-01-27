@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "typo fix",
+        "de": "typo fix",
+        "ru": "фиксация",
+        "pt": "correção de tipo",
+        "nl": "typo-fix",
+        "fr": "correction du type",
+        "it": "correzione di errore",
+        "es": "typo fix",
+        "pl": "fix typo",
+        "uk": "типофікс",
+        "zh-cn": "类型修复"
+      },
       "3.0.0": {
         "en": "added support for [PiPup](https://github.com/rogro82/PiPup) video and web stream",
         "de": "unterstützung für [PiPup](https://github.com/rogro82/PiPup) Video und Webstream",
@@ -80,19 +93,6 @@
         "pl": "Stable release",
         "uk": "Стабільний реліз",
         "zh-cn": "公平释放"
-      },
-      "2.2.0": {
-        "en": "translations for official release",
-        "de": "übersetzungen für die offizielle veröffentlichung",
-        "ru": "переводы для официального релиза",
-        "pt": "traduções para o lançamento oficial",
-        "nl": "vertaling:",
-        "fr": "traductions pour la libération officielle",
-        "it": "traduzioni per rilascio ufficiale",
-        "es": "traducción para publicación oficial",
-        "pl": "tłumaczenie na oficjalne wydanie",
-        "uk": "переклади на офіційне видання",
-        "zh-cn": "官方释放的翻译"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
