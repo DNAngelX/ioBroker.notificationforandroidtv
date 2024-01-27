@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "2.4.0",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "added support for [PiPup](https://github.com/rogro82/PiPup) video and web stream",
+        "de": "unterstützung für [PiPup](https://github.com/rogro82/PiPup) Video und Webstream",
+        "ru": "[PiPup] (https://github.com/rogro82/PiPup) видео и веб-поток",
+        "pt": "apoio adicional para [PiPup](https://github.com/rogro82/PiPup) vídeo e web stream",
+        "nl": "toegevoegde ondersteuning voor [PiPup](https://github.com/rogro82/PiPup) video- en webstream",
+        "fr": "un soutien supplémentaire pour [PiPup](https://github.com/rogro82/PiPup) flux vidéo et web",
+        "it": "[PiPup](https://github.com/rogro82/PiPup) video e web stream",
+        "es": "[PiPup](https://github.com/rogro82/PiPup) vídeo y transmisión web",
+        "pl": "data umieszczenia w wykazie strumień wideo i stron internetowych",
+        "uk": "додано підтримку [PiPup](https://github.com/rogro82/PiPup) веб-переглядач",
+        "zh-cn": "增加了对[PiPup]的支持(https://github.com/rogro82/PiPup). 视频和网络流"
+      },
       "2.4.0": {
         "en": "change requests for official release by @mcm1957 & @Apollon77",
         "de": "änderungswünsche zur offiziellen Veröffentlichung von @mcm1957 & @Apollon77",
@@ -80,19 +93,6 @@
         "pl": "tłumaczenie na oficjalne wydanie",
         "uk": "переклади на офіційне видання",
         "zh-cn": "官方释放的翻译"
-      },
-      "2.1.2": {
-        "en": "small small translation issues",
-        "de": "kleine übersetzungsprobleme",
-        "ru": "небольшие вопросы перевода",
-        "pt": "pequenas questões de tradução",
-        "nl": "kleine vertalingsproblemen",
-        "fr": "petites questions de traduction",
-        "it": "piccoli problemi di traduzione",
-        "es": "pequeños problemas de traducción",
-        "pl": "małe tłumaczenie",
-        "uk": "дрібні питання перекладу",
-        "zh-cn": "小型翻译问题"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
