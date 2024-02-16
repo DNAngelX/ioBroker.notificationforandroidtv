@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "news": {
+      "3.0.2": {
+        "en": "audit fixes",
+        "de": "prüfungsbehebungen",
+        "ru": "исправления аудита",
+        "pt": "correções de auditoria",
+        "nl": "auditfixes",
+        "fr": "correctifs d ' audit",
+        "it": "correzioni di audit",
+        "es": "soluciones de auditoría",
+        "pl": "poprawki do audytu",
+        "uk": "фіксатори аудиту",
+        "zh-cn": "审计修正"
+      },
       "3.0.1": {
         "en": "typo fix",
         "de": "typo fix",
@@ -69,19 +82,6 @@
         "zh-cn": "作为消息对象的扩展有效载荷可能性"
       },
       "2.2.2": {
-        "en": "Stable release",
-        "de": "Stabile Veröffentlichung",
-        "ru": "Стабильный релиз",
-        "pt": "Lançamento estável",
-        "nl": "Stabiel vrij",
-        "fr": "Sortie stable",
-        "it": "Rilascio stabile",
-        "es": "Stable release",
-        "pl": "Stable release",
-        "uk": "Стабільний реліз",
-        "zh-cn": "公平释放"
-      },
-      "2.2.1": {
         "en": "Stable release",
         "de": "Stabile Veröffentlichung",
         "ru": "Стабильный релиз",
