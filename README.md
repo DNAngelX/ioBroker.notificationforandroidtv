@@ -97,6 +97,9 @@ Now, you should be able to use PiPup on your Fire TV or other Android TV without
 
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (DNAngel) audit fixes
+
 ### 3.0.1 (2024-01-27)
 * (DNAngel) typo fix
 
