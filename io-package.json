@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "news": {
+      "3.0.3": {
+        "en": "audit fixes",
+        "de": "prüfungsbehebungen",
+        "ru": "исправления аудита",
+        "pt": "correções de auditoria",
+        "nl": "auditfixes",
+        "fr": "correctifs d ' audit",
+        "it": "correzioni di audit",
+        "es": "soluciones de auditoría",
+        "pl": "poprawki do audytu",
+        "uk": "фіксатори аудиту",
+        "zh-cn": "审计修正"
+      },
       "3.0.2": {
         "en": "audit fixes",
         "de": "prüfungsbehebungen",
@@ -80,19 +93,6 @@
         "pl": "rozszerzona możliwość obciążenia użytkowego jako obiekt wiadomości",
         "uk": "розширена можливість завантаження повідомлень як об'єкт повідомлення",
         "zh-cn": "作为消息对象的扩展有效载荷可能性"
-      },
-      "2.2.2": {
-        "en": "Stable release",
-        "de": "Stabile Veröffentlichung",
-        "ru": "Стабильный релиз",
-        "pt": "Lançamento estável",
-        "nl": "Stabiel vrij",
-        "fr": "Sortie stable",
-        "it": "Rilascio stabile",
-        "es": "Stable release",
-        "pl": "Stable release",
-        "uk": "Стабільний реліз",
-        "zh-cn": "公平释放"
       }
     },
     "title": "Notification for AndroidTv and FireTV",
@@ -160,8 +160,7 @@
       }
     ]
   },
-  "native": {
-  },
+  "native": {},
   "objects": [],
   "instanceObjects": []
 }
