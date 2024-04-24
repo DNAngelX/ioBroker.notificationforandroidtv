@@ -7,7 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const adapter = utils.adapter("notificationforandroidtv");
+//const adapter = utils.adapter("notificationforandroidtv"); -> use this
 const axios = require("axios");
 
 // Load your modules here, e.g.:
@@ -77,7 +77,7 @@ class Notificationforandroidtv extends utils.Adapter {
 
 		}
 
-		let stateVal = await adapter.getStateAsync(`${channelParentPath}.${id}`);
+		let stateVal = await this.getStateAsync(`${channelParentPath}.${id}`);
 		stateVal ? stateVal = stateVal.val : "";
 
 
@@ -95,7 +95,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	async onReady() {
 		// Initialize your adapter here
 
-		const dev = adapter.config.keys;
+		const dev = this.config.keys;
 
 		if (dev) {
 			for (const key in dev) {
@@ -110,7 +110,7 @@ class Notificationforandroidtv extends utils.Adapter {
 
 
 
-				//let initialCreate =  await adapter.getStatesAsync(deviceFolder) != undefined ? false : true;
+				//let initialCreate =  await this.getStatesAsync(deviceFolder) != undefined ? false : true;
 				const initialCreate =  true;
 
 				const positions = {
@@ -531,7 +531,7 @@ class Notificationforandroidtv extends utils.Adapter {
 
 			}
 		} else {
-			adapter.log.error("No AndroidTV`s configurated, please add a device");
+			this.log.error("No AndroidTV`s configurated, please add a device");
 		}
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -594,7 +594,7 @@ class Notificationforandroidtv extends utils.Adapter {
 				} else {
 					if (state.val != "")
 					{
-						adapter.log.error(`state ${id} is not a json string`);
+						this.log.error(`state ${id} is not a json string`);
 					}
 
 				}
@@ -615,7 +615,7 @@ class Notificationforandroidtv extends utils.Adapter {
 					} else {
 						if (state.val != "")
 						{
-							adapter.log.error(`state ${id} is not a json string`);
+							this.log.error(`state ${id} is not a json string`);
 						}
 
 					}
@@ -625,16 +625,17 @@ class Notificationforandroidtv extends utils.Adapter {
 			}
 
 
-			adapter.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 		} else {
 			// The state was deleted
-			adapter.log.debug(`state ${id} deleted`);
+			this.log.debug(`state ${id} deleted`);
 		}
 	}
 
 	name2id(pName) {
-		return (pName || "").replace(adapter.FORBIDDEN_CHARS, "_");
+		return (pName || "").replace(this.FORBIDDEN_CHARS, "_");
 	}
+
 	isJsonString(str) {
 		try {
 			JSON.parse(str);
@@ -650,7 +651,7 @@ class Notificationforandroidtv extends utils.Adapter {
 
 		const myObjectArray = id.split(".", 3);
 		const device = myObjectArray.join(".");
-		const ip = await adapter.getStateAsync(device + ".ip");
+		const ip = await this.getStateAsync(device + ".ip");
 		const url = `http://${ip.val}:7676${payload}`;
 
 		// send the request
@@ -659,10 +660,10 @@ class Notificationforandroidtv extends utils.Adapter {
 		})
 			.then(response => {
 
-				adapter.log.debug(`Notify successful! (${response.status})`);
+				this.log.debug(`Notify successful! (${response.status})`);
 			})
 			.catch(error => {
-				adapter.log.error(`Notify failed for :${ip}`, error.message);
+				this.log.error(`Notify failed for :${ip}`, error.message);
 			});
 
 		return true;
@@ -671,26 +672,26 @@ class Notificationforandroidtv extends utils.Adapter {
 
 	async notify(id, msg) {
 
-		adapter.log.debug("Notify fired!");
+		this.log.debug("Notify fired!");
 
 		const myObjectArray = id.split(".", 3);
 
 		const device = myObjectArray.join(".");
 
 
-		const title = await adapter.getStateAsync(device + ".title");
-		const duration = await adapter.getStateAsync(device + ".duration");
-		const position = await adapter.getStateAsync(device + ".position");
-		const width = await adapter.getStateAsync(device + ".width");
-		const transparency = await adapter.getStateAsync(device + ".transparency");
-		const type = await adapter.getStateAsync(device + ".type");
-		const color = await adapter.getStateAsync(device + ".color");
-		const ip = await adapter.getStateAsync(device + ".ip");
-		const icon = await adapter.getStateAsync(device + ".icon");
-		const iconurl = await adapter.getStateAsync(device + ".iconurl");
-		const imageurl = await adapter.getStateAsync(device + ".imageurl");
-		const delete_image = await adapter.getStateAsync(device + ".delete_image");
-		const delete_icon = await adapter.getStateAsync(device + ".delete_icon");
+		const title = await this.getStateAsync(device + ".title");
+		const duration = await this.getStateAsync(device + ".duration");
+		const position = await this.getStateAsync(device + ".position");
+		const width = await this.getStateAsync(device + ".width");
+		const transparency = await this.getStateAsync(device + ".transparency");
+		const type = await this.getStateAsync(device + ".type");
+		const color = await this.getStateAsync(device + ".color");
+		const ip = await this.getStateAsync(device + ".ip");
+		const icon = await this.getStateAsync(device + ".icon");
+		const iconurl = await this.getStateAsync(device + ".iconurl");
+		const imageurl = await this.getStateAsync(device + ".imageurl");
+		const delete_image = await this.getStateAsync(device + ".delete_image");
+		const delete_icon = await this.getStateAsync(device + ".delete_icon");
 
 		axios.post(`http://${ip.val}:7676
 			?msg=`+msg.val.replace(/\n/gi,"<br>")+
@@ -713,20 +714,20 @@ class Notificationforandroidtv extends utils.Adapter {
 				delete_image.val == true ? this.setStateAsync(device + ".imageurl", "", true) : "";
 				delete_icon.val == true ? this.setStateAsync(device + ".iconurl", "", true) : "";
 
-				adapter.log.debug(`Notify successful! (${response.status})`);
+				this.log.debug(`Notify successful! (${response.status})`);
 			})
 			.catch(error => {
-				adapter.log.error(`Notify failed for :${ip.val}`, error.message);
+				this.log.error(`Notify failed for :${ip.val}`, error.message);
 			});
 
 		return true;
 	}
 	async PiPupPayload(id, payload) {
 
-		adapter.log.debug("PiPup payload fired!");
+		this.log.debug("PiPup payload fired!");
 		const myObjectArray = id.split(".", 3);
 		const device = myObjectArray.join(".");
-		const ip = await adapter.getStateAsync(device + ".ip");
+		const ip = await this.getStateAsync(device + ".ip");
 
 		axios({
 			method: "post",
@@ -737,10 +738,10 @@ class Notificationforandroidtv extends utils.Adapter {
 			responseType: "json"
 		})
 			.then(response => {
-				adapter.log.debug(`PiPup payload successful! (${response.status})`);
+				this.log.debug(`PiPup payload successful! (${response.status})`);
 			})
 			.catch(error => {
-				adapter.log.error(`PiPup payload failed for :${ip.val}`, error.message);
+				this.log.error(`PiPup payload failed for :${ip.val}`, error.message);
 			});
 
 		return true;
@@ -748,24 +749,24 @@ class Notificationforandroidtv extends utils.Adapter {
 	}
 	async PiPup(id, msg) {
 
-		adapter.log.debug("PiPup fired!");
+		this.log.debug("PiPup fired!");
 
 		const myObjectArray = id.split(".", 3);
 		const device = myObjectArray.join(".");
 
-		const title = await adapter.getStateAsync(device + ".PiPup.title");
-		const duration = await adapter.getStateAsync(device + ".PiPup.duration");
-		const position = await adapter.getStateAsync(device + ".PiPup.position");
-		const width = await adapter.getStateAsync(device + ".PiPup.width");
-		const height = await adapter.getStateAsync(device + ".PiPup.height");
-		const type = await adapter.getStateAsync(device + ".PiPup.type");
-		const titleColor = await adapter.getStateAsync(device + ".PiPup.titleColor");
-		const titleSize = await adapter.getStateAsync(device + ".PiPup.titleSize");
-		const messageColor = await adapter.getStateAsync(device + ".PiPup.messageColor");
-		const messageSize = await adapter.getStateAsync(device + ".PiPup.messageSize");
-		const backgroundColor = await adapter.getStateAsync(device + ".PiPup.backgroundColor");
-		const ip = await adapter.getStateAsync(device + ".ip");
-		const url = await adapter.getStateAsync(device + ".PiPup.url");
+		const title = await this.getStateAsync(device + ".PiPup.title");
+		const duration = await this.getStateAsync(device + ".PiPup.duration");
+		const position = await this.getStateAsync(device + ".PiPup.position");
+		const width = await this.getStateAsync(device + ".PiPup.width");
+		const height = await this.getStateAsync(device + ".PiPup.height");
+		const type = await this.getStateAsync(device + ".PiPup.type");
+		const titleColor = await this.getStateAsync(device + ".PiPup.titleColor");
+		const titleSize = await this.getStateAsync(device + ".PiPup.titleSize");
+		const messageColor = await this.getStateAsync(device + ".PiPup.messageColor");
+		const messageSize = await this.getStateAsync(device + ".PiPup.messageSize");
+		const backgroundColor = await this.getStateAsync(device + ".PiPup.backgroundColor");
+		const ip = await this.getStateAsync(device + ".ip");
+		const url = await this.getStateAsync(device + ".PiPup.url");
 		const typeClear = type.val == 0 ? "video" : type.val == 1 ? "image" : type.val == 2 ? "web" : "";
 		const media = { [typeClear] : { "url": url.val, "width": width.val, "height": typeClear == "image" ? height.val : "" }};
 
@@ -792,10 +793,10 @@ class Notificationforandroidtv extends utils.Adapter {
 			responseType: "json"
 		})
 			.then(response => {
-				adapter.log.debug(`PiPup successful! (${response.status})`);
+				this.log.debug(`PiPup successful! (${response.status})`);
 			})
 			.catch(error => {
-				adapter.log.error(`PiPup failed for :${ip.val}`, error.message);
+				this.log.error(`PiPup failed for :${ip.val} - ${error.message}`);
 			});
 
 		return true;
