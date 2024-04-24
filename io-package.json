@@ -95,7 +95,6 @@
         "zh-cn": "作为消息对象的扩展有效载荷可能性"
       }
     },
-    "title": "Notification for AndroidTv and FireTV",
     "titleLang": {
       "en": "Notification for AndroidTv and FireTV",
       "de": "Benachrichtigung für AndroidTv und FireTV",
@@ -141,6 +140,7 @@
     "extIcon": "https://raw.githubusercontent.com/DNAngelX/ioBroker.notificationforandroidtv/main/admin/notificationforandroidtv.png",
     "readme": "https://github.com/DNAngelX/ioBroker.notificationforandroidtv/blob/main/README.md",
     "loglevel": "info",
+    "tier": 2,
     "mode": "daemon",
     "type": "messaging",
     "compact": true,
@@ -151,7 +151,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=3.3.22"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
