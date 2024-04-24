@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "news": {
+      "3.0.4": {
+        "en": "Release merges",
+        "de": "Veröffentlichungen",
+        "ru": "Выпущенные слияния",
+        "pt": "Fundição de lançamento",
+        "nl": "Samenvoegen losmaken",
+        "fr": "La publication fusionne",
+        "it": "Unghie di rilascio",
+        "es": "Las fusiones de liberación",
+        "pl": "Połączenia uwolnień",
+        "uk": "Випускають злиття",
+        "zh-cn": "发行合并"
+      },
       "3.0.3": {
         "en": "audit fixes",
         "de": "prüfungsbehebungen",
@@ -80,19 +93,6 @@
         "pl": "bugfix ładunku",
         "uk": "виправлення помилок",
         "zh-cn": "有效载错误修正"
-      },
-      "2.3.0": {
-        "en": "extended payload possibility as message object",
-        "de": "erweiterte nutzlastmöglichkeit als nachrichtenobjekt",
-        "ru": "расширенная возможность загрузки как объект сообщения",
-        "pt": "possibilidade de carga útil estendida como objeto de mensagem",
-        "nl": "extended payload mogelijkheid als bericht object",
-        "fr": "possibilité de charge utile prolongée comme objet de message",
-        "it": "possibilità di payload estesa come oggetto messaggio",
-        "es": "posibilidad de carga útil ampliada como objeto de mensaje",
-        "pl": "rozszerzona możliwość obciążenia użytkowego jako obiekt wiadomości",
-        "uk": "розширена можливість завантаження повідомлень як об'єкт повідомлення",
-        "zh-cn": "作为消息对象的扩展有效载荷可能性"
       }
     },
     "titleLang": {
