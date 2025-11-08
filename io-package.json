@@ -132,7 +132,10 @@
       "Benachrichtigungen",
       "Fire TV"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
     "platform": "Javascript/Node.js",
     "main": "main.js",
     "icon": "notificationforandroidtv.png",
