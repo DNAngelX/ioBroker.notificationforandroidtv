@@ -150,7 +150,7 @@ Now, you should be able to use PiPup on your Fire TV or other Android TV without
 ## License
 MIT License
 
-Copyright (c) 2024 DNAngel
+Copyright (c) 2024-2025 DNAngel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
