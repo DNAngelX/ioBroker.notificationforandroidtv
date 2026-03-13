@@ -98,6 +98,11 @@ Now, you should be able to use PiPup on your Fire TV or other Android TV without
 
 ## Changelog
 ### **WORK IN PROGRESS**
+* (DNAngelX) Migrate admin UI to jsonConfig (responsive design)
+* (DNAngelX) Update dependencies: ESLint 10, sinon 21, chai-as-promised 8, adapter-core 3.2.3
+* (DNAngelX) Add Node.js 22 and 24 to test matrix
+* (DNAngelX) Enable NPM Trusted Publishing
+
 ### 3.0.4 (2024-04-24)
 * (DNAngel/mcm1957) Release merges
 
