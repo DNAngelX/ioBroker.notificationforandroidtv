@@ -3,6 +3,10 @@
     "name": "notificationforandroidtv",
     "version": "3.0.4",
     "news": {
+      "3.1.0": {
+        "en": "Migrate admin UI to jsonConfig, update dependencies, ESLint 10",
+        "de": "Admin-UI zu jsonConfig migriert, Abhängigkeiten aktualisiert, ESLint 10"
+      },
       "3.0.4": {
         "en": "Release merges",
         "de": "Veröffentlichungen",
