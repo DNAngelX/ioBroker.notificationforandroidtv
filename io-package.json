@@ -124,9 +124,7 @@
       "Fire TV"
     ],
     "platform": "Javascript/Node.js",
-    "entrypoint": {
-      "js": "main.js"
-    },
+    "main": "main.js",
     "icon": "notificationforandroidtv.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/DNAngelX/ioBroker.notificationforandroidtv/main/admin/notificationforandroidtv.png",
@@ -152,7 +150,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=6.17.14"
+        "admin": ">=7.6.17"
       }
     ]
   },

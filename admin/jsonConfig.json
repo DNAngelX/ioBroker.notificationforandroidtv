@@ -7,7 +7,12 @@
                 "en": "Add your Android TV / Fire TV devices below. The IP address is used to send notifications.",
                 "de": "Füge deine Android TV / Fire TV Geräte unten hinzu. Die IP-Adresse wird verwendet, um Benachrichtigungen zu senden."
             },
-            "newLine": true
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
         },
         "_table": {
             "type": "table",
@@ -17,6 +22,11 @@
                 "en": "Android TV / Fire TV Devices",
                 "de": "Android TV / Fire TV Geräte"
             },
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12,
             "columns": [
                 {
                     "title": {
