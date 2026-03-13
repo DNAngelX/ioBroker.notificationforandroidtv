@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "notificationforandroidtv",
-    "version": "3.0.4",
+    "version": "3.1.0",
     "news": {
       "3.1.0": {
         "en": "Migrate admin UI to jsonConfig, update dependencies, ESLint 10",
@@ -84,19 +84,6 @@
         "pl": "zmień wnioski o oficjalne wydanie przez @ mcm1957 & @ Apollon77",
         "uk": "зміна запитів на офіційне видання @mcm1957 & @Apollon77",
         "zh-cn": "由@mcm1957 & @Apollon77更改正式发布请求"
-      },
-      "2.3.1": {
-        "en": "payload bugfix",
-        "de": "fehlerbehebung",
-        "ru": "ошибка загрузки",
-        "pt": "bugfix de carga",
-        "nl": "payload bugfix",
-        "fr": "bugfix charge utile",
-        "it": "payload bugfix",
-        "es": "payload bugfix",
-        "pl": "bugfix ładunku",
-        "uk": "виправлення помилок",
-        "zh-cn": "有效载错误修正"
       }
     },
     "titleLang": {
