@@ -132,9 +132,10 @@
       "Benachrichtigungen",
       "Fire TV"
     ],
-    "license": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
+    "entrypoint": {
+      "js": "main.js"
+    },
     "icon": "notificationforandroidtv.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/DNAngelX/ioBroker.notificationforandroidtv/main/admin/notificationforandroidtv.png",
@@ -149,14 +150,18 @@
     "adminUI": {
       "config": "materialize"
     },
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.0.0"
+        "admin": ">=6.17.14"
       }
     ]
   },

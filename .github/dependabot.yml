@@ -1,12 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: "/"
+    directories:
+      - "**/*"
     schedule:
       interval: monthly
-      time: "04:00"
+      day: "15"
+      time: "02:00"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 15
     assignees:
       - DNAngelX
     versioning-strategy: increase
@@ -15,8 +17,9 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-      time: "04:00"
+      day: "15"
+      time: "02:00"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 15
     assignees:
       - DNAngelX
