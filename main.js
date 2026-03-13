@@ -556,7 +556,7 @@ class Notificationforandroidtv extends utils.Adapter {
 			// clearInterval(interval1);
 
 			callback();
-		} catch (e) {
+		} catch (_e) {
 			callback();
 		}
 	}
@@ -639,7 +639,7 @@ class Notificationforandroidtv extends utils.Adapter {
 	isJsonString(str) {
 		try {
 			JSON.parse(str);
-		} catch (e) {
+		} catch (_e) {
 			return false;
 		}
 		return true;
