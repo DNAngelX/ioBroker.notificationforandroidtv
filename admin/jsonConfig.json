@@ -1,0 +1,63 @@
+{
+    "type": "panel",
+    "items": {
+        "_info": {
+            "type": "staticText",
+            "text": {
+                "en": "Add your Android TV / Fire TV devices below. The IP address is used to send notifications.",
+                "de": "Füge deine Android TV / Fire TV Geräte unten hinzu. Die IP-Adresse wird verwendet, um Benachrichtigungen zu senden."
+            },
+            "newLine": true
+        },
+        "_table": {
+            "type": "table",
+            "attr": "keys",
+            "newLine": true,
+            "label": {
+                "en": "Android TV / Fire TV Devices",
+                "de": "Android TV / Fire TV Geräte"
+            },
+            "columns": [
+                {
+                    "title": {
+                        "en": "IP Address",
+                        "de": "IP-Adresse",
+                        "ru": "IP адрес",
+                        "pt": "Endereço IP",
+                        "nl": "IP-adres",
+                        "fr": "Adresse IP",
+                        "it": "Indirizzo IP",
+                        "es": "Dirección IP",
+                        "pl": "Adres IP",
+                        "uk": "IP-адреса",
+                        "zh-cn": "IP地址"
+                    },
+                    "attr": "ip",
+                    "type": "text",
+                    "filter": false,
+                    "sort": true,
+                    "width": "200px"
+                },
+                {
+                    "title": {
+                        "en": "Name",
+                        "de": "Name",
+                        "ru": "Имя",
+                        "pt": "Nome",
+                        "nl": "Naam",
+                        "fr": "Nom",
+                        "it": "Nome",
+                        "es": "Nombre",
+                        "pl": "Nazwa",
+                        "uk": "Назва",
+                        "zh-cn": "名称"
+                    },
+                    "attr": "name",
+                    "type": "text",
+                    "filter": false,
+                    "sort": true
+                }
+            ]
+        }
+    }
+}
