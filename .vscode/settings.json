@@ -16,7 +16,7 @@
 				"admin/jsonTab.json",
 				"admin/jsonTab.json5"
 			],
-			"url": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin/refs/heads/master/packages/jsonConfig/schemas/jsonConfig.json"
+			"url": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin/master/packages/jsonConfig/schemas/jsonConfig.json"
 		}
 	]
 }
