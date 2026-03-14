@@ -65,10 +65,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Write permissions are required to create Github releases
-    # id-token is required for npm Trusted Publishing
     permissions:
       contents: write
-      id-token: write
 
     steps:
       - uses: ioBroker/testing-action-deploy@v1
@@ -77,3 +75,4 @@ jobs:
           # Uncomment the following line if your adapter cannot be installed using 'npm ci'
           # install-command: 'npm install'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
