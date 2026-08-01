@@ -11,7 +11,7 @@ const utils = require("@iobroker/adapter-core");
 const axios = require("axios");
 
 // Load your modules here, e.g.:
-//const fs = require("fs");
+//const fs = require("node:fs");
 
 class Notificationforandroidtv extends utils.Adapter {
 
